@@ -1,6 +1,9 @@
 @startuml Todos
+
 left to right direction
+
 actor "User" as fc
+
 package "Todos Project" {
     usecase "Register" as UC1
     usecase "Login" as UC2
