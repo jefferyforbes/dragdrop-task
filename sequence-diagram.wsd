@@ -1,0 +1,15 @@
+@startuml title User Case Diagram
+
+User -> Frontend: Clicks Login
+Frontend -> Backend: Requests page
+Backend -> User: Access granted
+User -> Frontend: View project overview
+Frontend -> Backend: Fetches projects from database
+Backend -> User: Displays current projects
+User -> Frontend: Requests view of project
+Frontend->Backend: Requests DB info to display full project
+Backend -> User: Enables edit/delete/view mode
+
+
+
+@enduml
