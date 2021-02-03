@@ -3,5 +3,5 @@
 
 ### Collaborators - Ilia Petrovs, Shanie Frater, Jeffery Forbes
 
-Our Main Wiki Page - https://github.com/jefferyforbes/dragdrop-task.wiki.git
+Our Main Wiki Page - https://github.com/jefferyforbes/dragdrop-task/wiki
 
