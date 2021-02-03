@@ -1,0 +1,21 @@
+@startuml Todos
+left to right direction
+actor "User" as fc
+package "Todos Project" {
+    usecase "Register" as UC1
+    usecase "Login" as UC2
+    usecase "Create Project" as UC3
+    usecase "Assign user" as UC4
+    usecase "Add task" as UC5
+    usecase "Organize details" as UC6
+}
+
+fc --> UC1
+fc --> UC2
+fc --> UC3
+fc --> UC4
+fc --> UC5
+fc --> UC6
+' UC4 --> cs
+
+@enduml
