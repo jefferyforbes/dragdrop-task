@@ -6,19 +6,19 @@ function Navbar() {
 		<nav>
 			<ul>
 				<li>
-					<Link to="/">Home</Link>
+					<Link to="/">HOME</Link>
 				</li>
 				<li>
-					<Link to="/userprofile">User Profile</Link>
+					<Link to="/userprofile">USER PROFILE</Link>
 				</li>
 				<li>
-					<Link to="/dashboard">Dashboard</Link>
+					<Link to="/dashboard">DASHBOARD</Link>
 				</li>
 				<li>
-					<Link to="/projectoverview"> Project Overview</Link>
+					<Link to="/projectoverview"> PROJECT OVERVIEW</Link>
 				</li>
 				<li className="user">
-					<Link to="/userprofile">User</Link>
+					<Link to="/userprofile">USER</Link>
 				</li>
 				<li className="searchBar">
 					<input type="text" placeholder="Search.."></input>
