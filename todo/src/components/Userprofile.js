@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Register() {
+function Userprofile() {
     return (
         <div>
-            <h1> blah </h1>
+            
         </div>
     )
 }
+
+export default Userprofile;
