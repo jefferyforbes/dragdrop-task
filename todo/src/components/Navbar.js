@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import addTask from "./Add"
 const hello = "Hi there test updated";
 
 function Navbar() {
@@ -21,6 +21,7 @@ function Navbar() {
 				</li>
 			</ul>
 		</nav>
-	);
+	)
 }
+
 export default Navbar;
