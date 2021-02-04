@@ -1,26 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const hello = "Hi there test updated";
-
 function Navbar() {
 	return (
 		<nav>
 			<ul>
 				<li>
-					<a href="default.asp">{hello}</a>
+					<Link to="/">Home</Link>
 				</li>
 				<li>
-					<a href="news.asp">User Profile</a>
+					<Link to="/userprofile">User Profile</Link>
 				</li>
 				<li>
-					<a href="contact.asp">Dashboard</a>
+					<Link to="/dashboard">Dashboard</Link>
 				</li>
 				<li>
-					<a href="about.asp">Project Overview</a>
+					<Link to="/projectoverview"> Project Overview</Link>
+				</li>
+				<li className="user">
+					<Link to="/userprofile">User</Link>
+				</li>
+				<li className="searchBar">
+					<input type="text" placeholder="Search.."></input>
 				</li>
 			</ul>
 		</nav>
 	);
 }
+
 export default Navbar;
+
+
