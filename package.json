@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jefferyforbes/dragdrop-task/issues"
   },
-  "homepage": "https://github.com/jefferyforbes/dragdrop-task#readme"
+  "homepage": "https://github.com/jefferyforbes/dragdrop-task#readme",
+  "dependencies": {
+    "sqlite3": "^5.0.0"
+  }
 }
