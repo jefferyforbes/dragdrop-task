@@ -28,6 +28,7 @@ ul {
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
+	font-weight: bold;
   }
   
   /* Change the link color to #111 (black) on hover */
@@ -53,3 +54,78 @@ body {
 	background-repeat: 'no-repeat';
 	background-size: cover;
 }
+
+.container {
+	justify-content: space-around;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	height: 10em;
+    position: relative; 
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	justify-content: space-around;
+}
+
+.welcome { 
+	padding: 3px;
+	height: 70px;
+	width: 775px;
+	background: black;
+	font-size: 50px;
+	justify-content: space-around;
+	top: 30%;
+}
+
+.login { 
+	padding: 3px;
+	height: 50px;
+	width: 400px;
+	font-size: 40px;
+	background: blue;
+    position: relative; 
+    margin: 0;
+    position: absolute;
+    top: 76%;
+    left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	justify-content: space-around;
+}
+
+.newUser {
+	padding: 3px;
+	height: 40px;
+	width: 500px;
+	font-size: 30px;
+	background: orange;
+    position: relative; 
+    margin: 0;
+    top: 70%;
+    left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	justify-content: space-around;
+}
+
+.activeProjects {
+	padding: 3px;
+	height: 30px;
+	width: 450px;
+	background: black;
+	color: white;
+	font-weight: bold;
+    position: relative; 
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	justify-content: space-around;
+}
+
