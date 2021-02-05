@@ -20,8 +20,8 @@ User.init(
 	}
 );
 
-// User.hasMany(Project, { as: "projects", foreignKey: "user_id" });
-// Project.belongsTo(User, { foreignKey: "user_id" });
+User.hasMany(Project, { as: "projects", foreignKey: "user_id" });
+Project.belongsTo(User, { foreignKey: "user_id" });
 
 module.exports = { User };
 

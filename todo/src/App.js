@@ -13,6 +13,7 @@ function App() {
 				</Route>
 				<Switch>
 					<Route exact path="/">
+						{/* <Navbar /> */}
 						<Home />
 					</Route>
 					<Route exact path="/register">
