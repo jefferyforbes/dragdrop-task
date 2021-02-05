@@ -7,13 +7,13 @@ import ReactDom from "react-dom";
 
 
 function Task() {
-        const [taskTitle, setTaskTitle] = useState("title task");
-        const [taskDescription, setTaskDescription] = useState(taskTitle);
-        const [taskAssigned, setTaskAssigned] = useState("Unassigned");
-        const [taskStatus, setTaskStatus] = useState("To Do");
-        const [taskProject, setTaskProject] = useState("No Project")
+    const [taskTitle, setTaskTitle] = useState("title task");
+    const [taskDescription, setTaskDescription] = useState(taskTitle);
+    const [taskAssigned, setTaskAssigned] = useState("Unassigned");
+    const [taskStatus, setTaskStatus] = useState("To Do");
+    const [taskProject, setTaskProject] = useState("No Project")
 
-        const useHandleInput = (event) => {
+    const useHandleInput = (event) => {
         event.preventDefault()
         console.log(taskTitle, taskDescription, taskAssigned, taskStatus, taskProject)
 
@@ -28,6 +28,7 @@ function Task() {
             height: "auto",
             border: "solid 8px black",
         }}>
+ 
             <p>Task: {taskTitle}</p>
             <p>Description: {taskDescription}</p>
             <p>Assigned: {taskAssigned}</p>
@@ -36,9 +37,9 @@ function Task() {
         </div>
 
         ReactDom.render(newTaskCard, document.getElementById("testProjectArea"));
-        }
+    }
 
-    return ( <div>
+    return (<div>
         <form onSubmit={useHandleInput}>
             {/* The form could be refactored using the reducer hook as it is preferable as the industry standard */}
             <div id="taskTitleContainer">
@@ -54,8 +55,8 @@ function Task() {
             <div id="taskAssignedContainer">
                 <label for="taskAssigned">Assign To</label>
                 <select defaultValue="assignee" onChange={event => setTaskAssigned(event.target.value)}>
-                    <option value="unassigned">Unassigned</option> 
-                    <option value="Person1">Person 1</option> 
+                    <option value="unassigned">Unassigned</option>
+                    <option value="Person1">Person 1</option>
                 </select>
             </div>
 
@@ -113,7 +114,7 @@ function Task() {
 // 		    body: newTaskCard,
 // 		    status: 5,
 //         });
-        
+
 // 	console.log("Inserted todo:" + nTask.title);
 //     });
 
