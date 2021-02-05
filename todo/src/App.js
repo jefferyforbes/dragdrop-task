@@ -8,8 +8,10 @@ function App() {
 	return (
 		<div className="App">
 			<Router>
-				<Switch>
+				<Route path='/'>
 					<Navbar />
+				</Route>
+				<Switch>
 					<Route exact path="/">
 						<Home />
 					</Route>
