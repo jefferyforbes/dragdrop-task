@@ -6,7 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Task from "./components/Task";
-import Project from "./components/Project";
+import Project from "./components/ProjectManage";
 import { useState } from "react";
 import Userprofile from "./components/Userprofile";
 
@@ -34,6 +34,10 @@ function App() {
 						<Route exact path="/userprofile">
 							<Userprofile />
 						</Route>
+    				<Route exact path="/projectoverview">
+						  <Project />
+							{/* <Task /> */}
+					  </Route>
 					</Switch>
 					{/* <Project /> */}
 					{/* <Task /> */}

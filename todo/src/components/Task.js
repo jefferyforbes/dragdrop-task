@@ -5,7 +5,6 @@ import ReactDom from "react-dom";
 // const { sequelize, DataTypes, Model } = require("/Programming/WhiteHat BootCamp/Multiverse SWE Apprenticeship/BootCamp/dragndrop-task/dragdrop-task/todo/database/sequelize_index");
 // const Todo = require("/Programming/WhiteHat BootCamp/Multiverse SWE Apprenticeship/BootCamp/dragndrop-task/dragdrop-task/todo/database/Todo")
 
-
 function Task() {
         const [taskTitle, setTaskTitle] = useState("title task");
         const [taskDescription, setTaskDescription] = useState(taskTitle);
@@ -77,6 +76,8 @@ function Task() {
             </div>
             <input type="submit" value="Submit" />
         </form>
+
+        <button href="/testpage">TEST PAGE</button>
 
         <div id="testProjectArea" style={{
             display: "flex",
