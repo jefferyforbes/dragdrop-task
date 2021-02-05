@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Task from "./components/Task";
-import Project from "./components/Project";
+import Project from "./components/ProjectManage";
 
 function App() {
 	return (
@@ -21,9 +21,11 @@ function App() {
 					<Route exact path="/register">
 						<Register />
 					</Route>
+					<Route exact path="/projectoverview">
+						<Project />
+							{/* <Task /> */}
+					</Route>
 				</Switch>
-				<Project />
-				{/* <Task /> */}
 			</Router>
 		</div>
 	);
