@@ -36,15 +36,7 @@ return ( <div>
         {/* The form could be refactored using the reducer hook as it is preferable as the industry standard */}
         <div id="projectTitleContainer">
             <label for="projectTitle">Project Title</label>
-            <input type="text" name="projectTitle" required value={taskTitle} onChange={event => setTaskTitle(event.target.value)} />
-        </div>
-
-        <div id="taskProjectContainer">
-            <label for="project-Created">Project</label>
-            <select name="project-Created" value={projectCreated} onChange={event => setProjectCreated(event.target.value)}>
-                <option value="None">None</option>
-                <option value="Project 1">Project 1</option>
-            </select>
+            <input type="text" name="projectTitle" required value={projectTitle} onChange={event => setProjectTitle(event.target.value)} />
         </div>
 
         <input type="submit" value="Submit" />
