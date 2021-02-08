@@ -6,8 +6,10 @@
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
+		"@types/sequelize": "^4.28.9",
 		"bcryptjs": "^2.4.3",
 		"concurrently": "^5.3.0",
+		"core-util-is": "^1.0.2",
 		"cors": "^2.8.5",
 		"express": "^4.17.1",
 		"jsdoc": "^3.6.6",
@@ -17,15 +19,17 @@
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "4.0.2",
 		"sequelize": "^6.5.0",
+		"sequelize-cli": "^6.2.0",
 		"sqlite3": "^5.0.0",
-		"web-vitals": "^1.0.1"
+		"web-vitals": "^1.0.1",
+		"webpack-dev-server": "^3.11.0"
 	},
 	"scripts": {
-		"start": "git react-scripts start",
+		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"dev": "concurrently \"npm run start \" \"node src/server.js\""
+		"dev": "concurrently \"node src/server.js \" \"npm run start\""
 	},
 	"eslintConfig": {
 		"extends": [

@@ -1,81 +1,69 @@
 import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 
-function Project() {
+function Project () {
 
     const url = "http://localhost:4000";
     const today = new Date();
     const [projectTitle, setProjectTitle] = useState("Project Title");
     const [projectCreated, setProjectCreated] = useState();
     const [projectDueDate, setDueDate] = useState();
-    const [projectList, setProjectList] = useState(null)
-    // const hostLocation = window.location.origin
-    // console.log(hostLocation)
+    const [projectList, setProjectList] = useState()
 
 // -------- Request All Projects --------
-// setTimeout(() => {
-//     fetch("http://localhost:4000/getProjects")
-// .then (res => {
-//     if (res.ok) {
-//         console.log("Success, got all projects")
-//         setProjectList(res.data)
-//     } else {
-//         console.log("Not Successful")
-//     }
-// })
-// console.log(projectList)
-// }, 555000);
+
+// useEffect(() => {
+//     setTimeout(() => {
+//         fetch("http://localhost:4000/getProjects")
+//     .then(res => {
+//         return res.json();
+//     })
+//     .then(data => {
+//         console.log(data);
+//         setProjectList(data)
+//     })
+//     }, 500);
+// }, [projectList])
 
 useEffect(() => {
+    const getProjects = async () => {
+		const data = await fetch("http://localhost:4000/getProjects", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({}),
+		})
+			.then(async (res) => {
+				return res;
+                setProjectList(res.body.Project)
+			});
+	};
+    const eachProject = () => {projectList.map(eachProject)}
+    getProjects()
 }, [projectList])
 
-// setTimeout(() => {
-//     fetch("https://6020f3fb46f1e4001780392c.mockapi.io/getApi/users")
-// .then (res => {
-//     if (res.ok) {
-//         console.log("Success, got all projects")
-//         setProjectList(res.data)
-//     } else {
-//         console.log("Not Successful")
+
+// useEffect(() => {
+//     const getProjects = async () => {
+//     fetch("http://localhost:4000/getProjects")
+//     .then(res =>{
+//         return res.json()
+//     })
+//     .then(data =>{
+//         console.log(data)
+//         setProjectList(data)
+//     } )
 //     }
-// })
-// console.log(projectList)
-// }, 3000);
+// }, [setProjectList]);
+
+// console.log(projectList, project)
 
  // ------- Create New Project --------
     const useHandleInput = (event) => {
-
     event.preventDefault()
-
     console.log(`Title: ${projectTitle}, Created: ${projectCreated}, Due: ${projectDueDate}`)
-
-
-		const newProject = (
-			<div
-				style={{
-					display: "flex",
-					flexFlow: "column",
-					color: "whitesmoke",
-					padding: "2rem",
-					margin: "2rem",
-					minHeight: "5rem",
-					width: "auto",
-					height: "auto",
-					border: "solid 8px black",
-				}}
-			>
-				<p>Task: {projectTitle}</p>
-				<p>Created: {projectCreated}</p>
-				<p>Due Date: {projectDueDate}</p>
-			</div>
-		);
-
-		ReactDom.render(newProject, document.getElementById("testProjectArea"));
-
-
-
 		setProjectCreated(today);
-
 		fetch("http://localhost:4000/createProject", {
 			method: "POST",
 			headers: {
@@ -88,10 +76,7 @@ useEffect(() => {
 			}),
 		});
 	};
-
-
     // Media Query required at and below 600-610px
-
     const buttonStyle = {
 		display: "inline-block",
 		margin: "0",
@@ -109,7 +94,6 @@ useEffect(() => {
 		cursor: "pointer",
 		marginTop: "20px",
 	};
-
     const projectTitleContainer = {
         marginTop: "5rem",
         fontSize: "1.8rem",
@@ -125,7 +109,6 @@ useEffect(() => {
 		border: "4px solid black",
         borderRadius: "12px",
     }
-
     const inputStyle = {
         fontSize: "1.2rem",
         marginTop: "0.6rem",
@@ -140,7 +123,6 @@ useEffect(() => {
     }
 
 return ( <div>
-
     <div style={{
         display: "flex",
         justifyContent: "center",
@@ -159,24 +141,10 @@ return ( <div>
         <input type="submit" style={buttonStyle} value="Submit" />
         </form>
     </div>
-
-    <div id="testProjectArea" style={{
-        display: "flex",
-        minWidth: "20rem",
-        minHeight: "35rem",
-        flexFlow: "row",
-        borderRadius: "12px",
-        padding: "4rem",
-        margin: "4rem",
-        background: "cyan",
-        justifyContent: "center",
-        border: "solid 0.3rem black",
-        fontFamily: "poppins",
-    }}>
-
+    <div>
+        {projectList}
     </div>
 
 </div>
-
 )}
 export default Project;

@@ -11,6 +11,9 @@ const { Todo } = require("../database/Todo");
 const { Project } = require("../database/Project");
 const { loop } = require("../database/Loop");
 const { readdirSync } = require("fs");
+const { json } = require("sequelize/types");
+const { response } = require("express");
+const {SequelizeHooks} = require("sequelize/types/lib/hooks");
 
 const port = 4000;
 
@@ -83,20 +86,12 @@ app.post("/createProject", async (req, res) => {
 
 // Request All Projects
 app.get("/getProjects", async (req, res) => {
-	const projects = await Project.findAll({
-		include: [
-			{model: Project, as: "projects",
-				include: [{model: Todo, as: "todos"
-					}]
-				}
-			],
-		})
-	try {
-		res.render("project", {projects})
-	} catch (Error) {
-		console.log(Error)
-	}
-})
+	const projectList = await Project.findAll()
+	newProjectList = res.body
+	json.stringify(newProjectList)
+	json.stringify(projectList)
+	console.log(newProjectList, projectList)
+	console.log(allProjects)})
 
 app.get("/project/:id", async (req, res) => {
 	const project = await Project.findOne({

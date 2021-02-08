@@ -34,12 +34,12 @@ export default function Login({ addProject }) {
 			.then(async (res) => {
 				setCredentials({ username, password });
 				history.push("/dashboard");
-				return res;
+				// return res;
 			})
 			.catch((err) => {
 				setError(err.message);
 			});
-		addProject(data.projects);
+		// addProject(data.projects);
 	};
 
 	const wrapperStyle = {

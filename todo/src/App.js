@@ -59,7 +59,7 @@ function App() {
 							<Login addProject={addToState} />
 						</Route>
 						<Route exact path="/dashboard">
-							<Dashboard projects={projects} />
+							<Dashboard projects={Project} />
 						</Route>
 						<Route exact path="/userprofile">
 							<Userprofile />
@@ -68,10 +68,10 @@ function App() {
 							<ProjectPage />
 						</Route> */}
 						<Route exact path="/project/:id">
-							<Project projects={projects} />
+							{/* <Project projects={projects} /> */}
 						</Route>
 						<Route exact path="/projectoverview">
-							{/* <Project /> */}
+							<Project />
 							{/* <Task /> */}
 						</Route>
 					</Switch>
