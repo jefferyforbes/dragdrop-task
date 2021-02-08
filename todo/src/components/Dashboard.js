@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Project from "./Project";
+import ProjectPage from "./ProjectPage";
 
 function Dashboard({ projects }) {
 	return (

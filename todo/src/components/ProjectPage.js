@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Todo from "./Todo";
 import { useParams } from "react-router-dom";
 
-function Project({ projects }) {
+function ProjectPage({ projects }) {
 	const { id } = useParams();
 	const currentProject = projects.find(function (project) {
 		return project.id == id;
@@ -18,4 +18,4 @@ function Project({ projects }) {
 	);
 }
 
-export default Project;
+export default ProjectPage;
