@@ -40,6 +40,7 @@ app.post("/login", async (req, res) => {
 			username: username,
 		},
 	});
+	
 	if (!user || user.password !== bcrypt.hashSync(password, salt)) {
 		console.log("Invalid login");
 		res.status(403);
@@ -49,7 +50,6 @@ app.post("/login", async (req, res) => {
 		res.status(200);
 		res.json(username);
 	}
-
 	// res.json(user);
 });
 
@@ -66,11 +66,26 @@ app.post("/createProject", async (req, res) => {
 	} else {
 	res.json(newProject).status(200);
 	alert(`${newProject} already exists`)
-	console.log("Already exists");
-	res.status(500);
-	res.json({ error: "User already exists" });
+	console.log(`${newProject} already exists`);
 	}
 });
+
+// Request All Projects
+app.get("/getProjects", async (req, res) => {
+	const projects = await Project.findAll({
+		include: [
+			{model: Project, as: "projects",
+				include: [{model: Todo, as: "todos"
+					}]
+				}
+			],
+		})
+	try {
+		res.render("project", {projects})
+	} catch (Error) {
+		console.log(Error)
+	}
+})
 
 app.listen(port, () => {
 	console.log(`Server listening on port http://localhost:${port}`);

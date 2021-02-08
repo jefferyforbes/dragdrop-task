@@ -5,7 +5,6 @@ function Userprofile() {
 	const [credentials] = useContext(CredentialsContext);
 	return (
 		<div className="userProfile">
-			<a href=""></a>
 			<div>Welcome {credentials && credentials.username}</div>;
 			<ul className="userContainer">
 				<li className="userDetails"> Name: </li>
