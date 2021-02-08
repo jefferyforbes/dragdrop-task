@@ -35,7 +35,7 @@ async function loop() {
 				title: title,
 				body: body,
 				status: status,
-				todo_id: id,
+				// todo_id: id,
 			});
 		}
 	});

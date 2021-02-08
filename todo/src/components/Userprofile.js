@@ -1,5 +1,5 @@
-import React from 'react'
-import Navbar from './Navbar'
+import React, { useContext } from "react";
+import { CredentialsContext } from "../App";
 
 // function Userprofile() {
 //     return (
@@ -30,6 +30,12 @@ function Userprofile() {
             <button className="button1"> Cancel changes </button>
         </div>
     )
+
+    // const [credentials] = useContext(CredentialsContext);
+	// return (
+	// 	<div className="userProfile">
+	// 		<a href=""></a>
+	// 		<div>Welcome {credentials && credentials.username}</div>; 
 }
 
 export default Userprofile;
