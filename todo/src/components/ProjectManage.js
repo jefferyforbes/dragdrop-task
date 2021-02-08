@@ -49,38 +49,45 @@ useEffect(() => {
 
     console.log(`Title: ${projectTitle}, Created: ${projectCreated}, Due: ${projectDueDate}`)
 
-    const newProject = <div style={{
-        display: "flex",
-        flexFlow: "column",
-        color: "whitesmoke",
-        padding: "2rem",
-        margin: "2rem",
-        minHeight: "5rem",
-        width: "auto",
-        height: "auto",
-        border: "solid 8px black",
-    }}>
-        <p>Task: {projectTitle}</p>
-        <p>Created: {projectCreated}</p>
-        <p>Due Date: {projectDueDate}</p>
-    </div>
 
-    ReactDom.render(newProject, document.getElementById("testProjectArea"));
+		const newProject = (
+			<div
+				style={{
+					display: "flex",
+					flexFlow: "column",
+					color: "whitesmoke",
+					padding: "2rem",
+					margin: "2rem",
+					minHeight: "5rem",
+					width: "auto",
+					height: "auto",
+					border: "solid 8px black",
+				}}
+			>
+				<p>Task: {projectTitle}</p>
+				<p>Created: {projectCreated}</p>
+				<p>Due Date: {projectDueDate}</p>
+			</div>
+		);
 
-        setProjectCreated(today)
-        
-        fetch("http://localhost:4000/createProject", {
+		ReactDom.render(newProject, document.getElementById("testProjectArea"));
+
+
+
+		setProjectCreated(today);
+
+		fetch("http://localhost:4000/createProject", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
 				projectTitle,
-                projectCreated,
-                projectDueDate
+				projectCreated,
+				projectDueDate,
 			}),
-		})
-    }
+		});
+	};
 
 
     // Media Query required at and below 600-610px
@@ -172,5 +179,4 @@ return ( <div>
 </div>
 
 )}
-
 export default Project;

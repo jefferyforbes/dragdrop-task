@@ -10,9 +10,9 @@ export default function Register() {
 	const [error, setError] = useState("");
 	const [, setCredentials] = useContext(CredentialsContext);
 
-	const register = (e) => {
+	const register = async (e) => {
 		e.preventDefault();
-		fetch("http://localhost:4000/register", {
+		const data = await fetch("http://localhost:4000/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -30,6 +30,7 @@ export default function Register() {
 			.catch((err) => {
 				setError(err.message);
 			});
+		console.log(data);
 	};
 
 	const wrapperStyle = {
