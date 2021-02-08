@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { CredentialsContext } from "../App";
+import { CredentialsContext, ProjectsContext } from "../App";
 
 export const handleError = async (response) => {
 	if (!response.ok) {
@@ -11,15 +11,16 @@ export const handleError = async (response) => {
 	return response.json();
 };
 
-export default function Login() {
+export default function Login({ addProject }) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [, setCredentials] = useContext(CredentialsContext);
+	// const [, setProjects] = useContext(ProjectsContext);
 
-	const login = (e) => {
+	const login = async (e) => {
 		e.preventDefault();
-		fetch("http://localhost:4000/login", {
+		const data = await fetch("http://localhost:4000/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -30,13 +31,15 @@ export default function Login() {
 			}),
 		})
 			.then(handleError)
-			.then(() => {
+			.then(async (res) => {
 				setCredentials({ username, password });
-				history.push("/");
+				history.push("/dashboard");
+				return res;
 			})
 			.catch((err) => {
 				setError(err.message);
 			});
+		addProject(data.projects);
 	};
 
 	const wrapperStyle = {

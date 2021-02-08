@@ -9,6 +9,8 @@ const salt = bcrypt.genSaltSync(10);
 const { User } = require("../database/User");
 const { Todo } = require("../database/Todo");
 const { Project } = require("../database/Project");
+const { loop } = require("../database/Loop");
+const { readdirSync } = require("fs");
 
 const port = 4000;
 
@@ -40,14 +42,23 @@ app.post("/login", async (req, res) => {
 			username: username,
 		},
 	});
-	if (!user || user.password !== bcrypt.hashSync(password, salt)) {
+	// if (!user || user.password !== bcrypt.hashSync(password, salt)) {
+	if (!user || user.password !== password) {
 		console.log("Invalid login");
 		res.status(403);
 		res.json({ error: "Invalid login" });
 	} else {
+		const projects = await user.getProjects({
+			include: [
+				{
+					model: Todo,
+					as: "todos",
+				},
+			],
+		});
 		console.log("Loggin in");
 		res.status(200);
-		res.json(username);
+		res.json({ username, projects });
 	}
 
 	// res.json(user);
@@ -60,16 +71,32 @@ app.post("/createProject", async (req, res) => {
 		const newProject = await Project.create({
 			title: projectTitle,
 			createdAt: projectCreated,
-			dueAt: projectDueDate
+			dueAt: projectDueDate,
 		});
 		res.json(newProject).status(200);
 	} else {
-	res.json(newProject).status(200);
-	alert(`${newProject} already exists`)
-	console.log("Already exists");
-	res.status(500);
-	res.json({ error: "User already exists" });
+		res.json(newProject).status(200);
+		alert(`${newProject} already exists`);
+		console.log("Already exists");
+		res.status(500);
+		res.json({ error: "User already exists" });
 	}
+});
+
+app.get("/project/:id", async (req, res) => {
+	const project = await Project.findOne({
+		where: {
+			id: req.params.id,
+		},
+		include: [
+			{
+				model: Todo,
+				as: "todos",
+			},
+		],
+		nest: true,
+	});
+	res.json(project);
 });
 
 app.listen(port, () => {
@@ -84,7 +111,7 @@ function isUnique(username) {
 		}
 		return true;
 	});
-};
+}
 
 // Create Project Validation
 function projectCheck(projectTitle) {
