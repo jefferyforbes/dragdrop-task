@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CredentialsContext } from "../App";
 
 function Navbar() {
+	const [credentials] = useContext(CredentialsContext);
 	return (
 		<nav>
 			<ul>
+				<li>{credentials ? "" : <Link to="/">HOME</Link>}</li>
 				<li>
-					<Link to="/">HOME</Link>
+					{credentials ? <Link to="/userprofile">USER PROFILE</Link> : ""}
 				</li>
+				<li>{credentials ? <Link to="/dashboard">DASHBOARD</Link> : ""}</li>
 				<li>
-					<Link to="/userprofile">USER PROFILE</Link>
-				</li>
-				<li>
-					<Link to="/dashboard">DASHBOARD</Link>
-				</li>
-				<li>
-					<Link to="/projectoverview"> PROJECT OVERVIEW</Link>
+					{credentials ? (
+						<Link to="/projectoverview"> PROJECT OVERVIEW</Link>
+					) : (
+						""
+					)}
 				</li>
 				<li className="user">
-					<Link to="/userprofile">USER</Link>
+					{credentials ? <Link to="/userprofile">USER</Link> : ""}
 				</li>
 				<li className="searchBar">
 					<input type="text" placeholder="Search.."></input>
@@ -29,5 +31,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-

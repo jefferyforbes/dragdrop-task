@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import { CredentialsContext } from "../App";
+import { CredentialsContext, ProjectsContext } from "../App";
 
 function Userprofile() {
 	const [credentials] = useContext(CredentialsContext);
+	// const projects = useContext(ProjectsContext);
 	return (
 		<div className="userProfile">
 			<a href=""></a>
 			<div>Welcome {credentials && credentials.username}</div>;
+			{/* <div>Welcome {projects && projects[0].title}</div>; */}
 			<ul className="userContainer">
 				<li className="userDetails"> Name: </li>
 				<li className="userDetails"> Position: Assistant Administrator</li>

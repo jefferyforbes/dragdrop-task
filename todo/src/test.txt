@@ -1,0 +1,58 @@
+
+		{
+			id: 1,
+			title: "Project 1",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "Eat bed",
+					body: "Make bed",
+					status: 1,
+					todo_id: 1,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 2,
+					todo_id: 1,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 1,
+					todo_id: 1,
+				},
+			],
+		},
+		{
+			id: 2,
+			title: "Project 2",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "boss baby bed",
+					body: "buy the bed",
+					status: 1,
+					todo_id: 2,
+				},
+				{
+					id: 2,
+					name: "bosow real",
+					body: "les a psa",
+					status: 2,
+					todo_id: 2,
+				},
+				{
+					id: 3,
+					name: "lopa bopa",
+					body: "cka fraiche",
+					status: 1,
+					todo_id: 2,
+				},
+			],
+		},
+	

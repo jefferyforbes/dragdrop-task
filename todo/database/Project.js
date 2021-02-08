@@ -32,7 +32,15 @@ module.exports = { Project };
 		title: "New project",
 		createdAt: Date.now,
 		dueAt: Date.now,
+		user_id: 1,
+	});
+	console.log("Inserted project:" + r.title);
+	const d = await Project.create({
+		title: "Aos project",
+		createdAt: Date.now,
+		dueAt: Date.now,
+		user_id: 1,
 	});
 
-	console.log("Inserted project:" + r.title);
+	console.log("Inserted project:" + d.title);
 })();

@@ -10,6 +10,11 @@ class User extends Model {
 
 User.init(
 	{
+		// id: {
+		// 	type: DataTypes.INTEGER,
+		// 	primaryKey: true,
+		// 	autoIncrement: true,
+		// },
 		username: DataTypes.STRING,
 		password: DataTypes.STRING,
 		avatar: DataTypes.STRING,
@@ -20,6 +25,7 @@ User.init(
 	}
 );
 
+// User.hasMany(Project);
 User.hasMany(Project, { as: "projects", foreignKey: "user_id" });
 Project.belongsTo(User, { foreignKey: "user_id" });
 
@@ -31,8 +37,14 @@ module.exports = { User };
 	const r = await User.create({
 		username: "testUser",
 		password: "aaaaa",
-		password: "www.test.com",
+		avatar: "www.test.com",
+	});
+	console.log("Inserted user:" + r.username);
+	const b = await User.create({
+		username: "Noth sds",
+		password: "aaaaa",
+		avatar: "www.sodas.com",
 	});
 
-	console.log("Inserted user:" + r.username);
+	console.log("Inserted user:" + b.username);
 })();

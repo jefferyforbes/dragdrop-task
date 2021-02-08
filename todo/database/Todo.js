@@ -22,13 +22,14 @@ Todo.init(
 module.exports = { Todo };
 
 // local testing - remove when using Jest
-(async () => {
-	await sequelize.sync({ force: true }); // recreate db
-	const r = await Todo.create({
-		title: "testUser",
-		body: "aaaaa",
-		status: 5,
-	});
+// (async () => {
+// 	await sequelize.sync({ force: true }); // recreate db
+// 	const r = await Todo.create({
+// 		title: "todoOne",
+// 		body: "aaaaa",
+// 		status: 5,
+// 		todo_id: 1,
+// 	});
 
-	console.log("Inserted todo:" + r.title);
-})();
+// 	console.log("Inserted todo:" + r.title);
+// })();
