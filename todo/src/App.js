@@ -14,7 +14,7 @@ import Project from "./components/ProjectManage";
 import { useState } from "react";
 import Userprofile from "./components/Userprofile";
 import Dashboard from "./components/Dashboard";
-import Project from "./components/Project";
+import ProjectPage from "./components/ProjectPage";
 
 export const CredentialsContext = React.createContext(null);
 // export const ProjectsContext = React.createContext(null);
