@@ -6,11 +6,16 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Task from "./components/Task";
+
+// import Project from "./components/Project";
+// import Userprofile from "./components/Userprofile";
+
 import Project from "./components/ProjectManage";
 import { useState } from "react";
 import Userprofile from "./components/Userprofile";
 
 export const CredentialsContext = React.createContext(null);
+
 
 function App() {
 	const credentialsState = useState(null);
