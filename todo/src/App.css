@@ -1,7 +1,7 @@
 *,
 *::before,
 *::after {
-	margin: 0;
+	margin: 0px;
 	padding: 0;
 }
 
@@ -57,6 +57,7 @@ body {
 }
 
 /* Div class container editing for the main text */
+
 .container {
 	justify-content: space-around;
 	color: white;
@@ -74,18 +75,18 @@ body {
 	justify-content: space-around;
 }
 
-/* styling for "Welcome to ____" */
-.welcome { 
+.welcome {
 	padding: 3px;
 	height: 70px;
 	width: 775px;
 	background: black;
 	font-size: 50px;
 	justify-content: space-around;
-	top: 30%;
-}
+	top: 30%; 
+} 
 
 /* styling for login */
+
 .login { 
 	padding: 3px;
 	height: 50px;
@@ -100,10 +101,10 @@ body {
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 	justify-content: space-around;
-}
+} 
 
 /* styling for new user/register button */
-.newUser {
+.newUser { 
 	padding: 3px;
 	height: 40px;
 	width: 500px;
@@ -115,7 +116,7 @@ body {
     left: 50%;
     margin-right: -50%;
 	transform: translate(-50%, -50%);
-	justify-content: space-around;
+	justify-content: space-around; 
 }
 
 /* draft styling for dashboard */
@@ -150,22 +151,212 @@ body {
 	text-align: center;
 	
 }
-/* The Modal (background) */
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
+
+.box {
+	float: right;
+	box-sizing: border-box;
+	width: 360px;
+	opacity: 90%;
+	background-color: black;
+	height: 650px;
+	border: 2px;
+	border-style: solid;
+	box-shadow: -3px -3px 7px #ffffff73;
+	border-radius: 5px;
+	margin-top: 50px;
+	overflow: hidden;
+	margin: 5px;
+	text-align: center;
+}
+
+.img {
+	box-sizing: border-box;
+	width: 149px;
+	height: 149px;
+	border-radius: 50%;
+	margin: 20px;
+	border: 5px #e0e6eb;
+	border-style: solid;
+	padding: 3px;
+	background:none;
+	float: none;
+	display: block;
+  	margin-left: auto;
+ 	margin-right: auto;
+	justify-content: space-around;
+}
+
+.button {
+	display: block;
+	box-sizing: border-box;
+	background: none;
+	color:white;
+	margin-bottom: 30px;
+	padding: 4px;
+	width: 220px;
+	height: 32px;
+	border:none;
+	border-bottom: 1px;
+	border-bottom: solid;
+	font-family: 'Roboto',sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	transition: 0.2 ease;
+	margin-left: auto;
+ 	margin-right: auto;
+}
+
+.button1 {
+	border: 1px solid;
+	background-color: black;
+	color: white;
+	height:30px;
+	width: 100px;
+	border-radius: 5px;
+	margin:4px;
+	transition: all 0.3s;
+	justify-content: space-between;
+	size: auto;
+	cursor: pointer;
+}
+
+.button:focus {
+	border-bottom: 4px solid;
+	border-bottom-right-radius: 20px;
+	color:white;
+	transition: 02.ease;
+}
+
+/* styling of the user profile summary */
+.userprof1 {
+	box-sizing: border-box;
+	width: 360px;
+	opacity: 90%;
+	background-color: black;
+	height: 650px;
+	border: 2px;
+	border-style: solid;
+	box-shadow: -3px -3px 7px #ffffff73;
+	border-radius: 5px;
+	margin-top: 50px;
+	overflow: hidden;
+	margin: 5px;
+	text-align: center;
+}
+
+/* styling of the actual modal container box */
+.modal-background {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	position: absolute;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-	-webkit-animation-name: fadeIn; /* Fade in the background */
-	-webkit-animation-duration: 0.4s;
-	animation-name: fadeIn;
-	animation-duration: 0.4s
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+/* styling of the modal contents */
+.modal-box {
+	width: 500px;
+	height: 300px;
+	background: white;
+	border-radius: 4px;
+	text-align: center;
+	padding: 20px;
+	position: absolute; 
+	position: relative;
+	display: none;
+}
+
+/* positioning and editing of the logo */
+.modalimage {
+	width: 100px;
+	height: 100px;
+}
+
+/* styling of the submit button*/
+.modal-button {
+	background-color: black;
+	border: 2px solid white;
+	border-radius: 30px;
+	text-decoration: none;
+	padding: 10px 28px;
+	color: white;
+	margin-top: 10px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+/* editing hover function for submit buttom */
+.modal-button:hover {
+		background-color: black;
+		color: pink;
+		border: 2px solid white;
+		cursor: pointer;
+}
+
+/* organising input boxes of modal box */
+.modal-input {
+	width: 50%;
+	display: block;
+	margin: 15px auto;
+	cursor: text;
+
+}
+
+/* closing of the modal box */
+.close {
+	position: absolute;
+	top: 0;
+	right: 14px;
+	font-size: 40px;
+	transform: rotate(45deg);
+	cursor: pointer;
+}
+
+.footer {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color:black;
+	border-bottom: solid 5px white;
+	position: fixed;
+   	left: 0;
+   	bottom: 0;
+   	width: 100%;
+   	text-align: center;
+	height: 60px;
+
   }
   
- 
+ .footer-text  {
+	display: block;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	align-items: center;
+}
+
+.footer-button {
+	background-color: black;
+	border: 2px solid white;
+	border-radius: 30px;
+	text-decoration: none;
+	padding: 10px 28px;
+	color: white;
+	margin-top: 10px;
+	display: inline-block;
+	margin: 10px;
+	cursor: pointer;
+	}
+	
+.footer-button:hover {
+	background-color: black;
+	color: pink;
+	border: 2px solid white;
+}
+
