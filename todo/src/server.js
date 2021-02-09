@@ -60,7 +60,7 @@ app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
 	if (!errors.isEmpty()) {
 		return res
 			.status(400)
-			.json({ error: "Password must be 6 characters long" });
+			.json({ error: "Password must be at least 6 characters long" });
 	}
 	const { username, password } = req.body;
 	console.log("Login success");
