@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { CredentialsContext } from "../App";
 
@@ -25,7 +25,9 @@ export default function Register() {
 			.then(handleError)
 			.then(() => {
 				setCredentials({ username, password });
+				localStorage.setItem("currentUser", username);
 				history.push("/");
+				window.location.reload();
 			})
 			.catch((err) => {
 				setError(err.message);
@@ -33,26 +35,11 @@ export default function Register() {
 		console.log(data);
 	};
 
-	const wrapperStyle = {
-		display: "flex",
-		alignItem: "center",
-		justifyContent: "center",
-		marginTop: "200px",
-		width: "100%",
-		height: "400px",
-		border: "1px solid black",
-	};
-
-	const containerStyle = {
-		// margin: "auto",
-		background: "white",
-		padding: "50px",
-		border: "1px solid black",
-		borderRadius: "5%",
-		display: "flex",
-		flexDirection: "column",
-		width: "30%",
-	};
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		setError("");
+	// 	}, 3000);
+	// }, [error]);
 
 	const buttonStyle = {
 		display: "inline-block",
@@ -74,28 +61,33 @@ export default function Register() {
 
 	const history = useHistory();
 	return (
-		<div style={wrapperStyle}>
-			<div style={containerStyle}>
+		<div className="wrapperStyle">
+			<div className="containerStyle">
 				<h1>Register</h1>
 				{error && <span style={{ color: "red" }}>{error}</span>}
 				<form onSubmit={register}>
 					<input
+						className="register_input"
 						onChange={(e) => setUsername(e.target.value)}
 						placeholder="username"
+						required
+						minLength="4"
 					></input>
 					<br />
 					<input
+						className="register_input"
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}
 						placeholder="password"
+						required
+						// minLength="6"
 					></input>
 					<br />
-					<button style={buttonStyle} type="submit">
+					<button className="register_button" style={buttonStyle} type="submit">
 						Register
 					</button>
 				</form>
 			</div>
-			<div style={containerStyle}>Test</div>
 		</div>
 	);
 }
