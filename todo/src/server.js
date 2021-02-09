@@ -124,7 +124,6 @@ app.get("/getProjects", async (req, res) => {
         //     ]
         // })
 
-
 	await User.findOne({
 		where: {user_id: currentUser},
 		include: [
