@@ -4,22 +4,6 @@ import { Link } from "react-router-dom";
 
 function Home() {
 
-	const [projectList, setProjectList] = useState([])
-
-	useEffect(() => {
-		    const currentUser = localStorage.getItem("currentUser");
-		    const getProjectOptions = {
-		    method: "POST",
-		    headers: { "Content-Type": "application/json" },
-		    body: JSON.stringify({currentUser})
-		    };
-		    fetch("http://localhost:4000/getProjects", getProjectOptions)
-		    .then(() => {
-		        (Response => console.log(Response))
-				(Response => setProjectList(Response))
-				console.log(projectList)
-		    }, [projectList])})
-
 	return (
 		<div className="container">
 			<h1 className="welcome"> Welcome to SIJ - Task Manager</h1>
