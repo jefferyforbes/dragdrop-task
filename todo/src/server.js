@@ -61,6 +61,7 @@ app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
 			username: username,
 		},
 	});
+	const userAvatar = user.avatar;
 
 	// if (!user || user.password !== bcrypt.hashSync(password, salt)) {
 	if (!user || user.password !== password) {
@@ -78,7 +79,7 @@ app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
 		});
 		console.log("Loggin in");
 		res.status(200);
-		res.json({ username, projects });
+		res.json({ username, userAvatar, projects });
 	}
 	// res.json(user);
 });
@@ -132,6 +133,17 @@ app.get("/project/:id", async (req, res) => {
 		nest: true,
 	});
 	res.json(project);
+});
+
+/**
+ * Delete a project from DB
+ */
+app.delete("/project/:id", async (req, res) => {
+	await Project.destroy({
+		where: {
+			id: req.params.id,
+		},
+	});
 });
 
 app.listen(port, () => {
