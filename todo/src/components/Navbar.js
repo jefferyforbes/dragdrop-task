@@ -27,31 +27,31 @@ function Navbar() {
 					<li>
 						{credentials ? (
 							<Link to="/userprofile" alt="home">
-								USER
+								USER PROFILE
 							</Link>
 						) : (
-							""
-						)}
+								""
+							)}
 					</li>
 					<li>{credentials ? <Link to="/dashboard">DASHBOARD</Link> : ""}</li>
 					<li>
 						{credentials ? (
 							<Link to="/projectoverview"> PROJECT OVERVIEW</Link>
 						) : (
-							""
-						)}
+								""
+							)}
 					</li>
 					<li className="user">
 						{credentials ? (
 							<a onClick={handleLogout} href="/">
-								LOG OUT
+								LOG OUT 
 							</a>
 						) : (
-							""
-						)}
+								""
+							)}
 					</li>
 					<li className="user">
-						{credentials ? <Link to="/userprofile">USER</Link> : ""}
+						{credentials ? <Link to="/userprofile">ACCOUNT</Link> : ""}
 					</li>
 					{/* <li className="searchBar">
 						<input type="text" placeholder="Search.."></input>
@@ -69,7 +69,14 @@ function Navbar() {
 						</div>
 					</li>
 				</ul>
+				{credentials ? "" : <div className="footer">
+				<div className="footer-text">Already have an account with us? <Link to="/login"><button className="footer-button" id="footerbutton">
+					Log in now </button> </Link>
+				</div>
+			</div>}
 			</nav>
+
+
 			{/* <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
 				Modal
 			</a>
