@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { CredentialsContext, ProjectsContext } from "../App";
 
 export const handleError = async (response) => {
@@ -33,34 +34,15 @@ export default function Login({ addProject }) {
 			.then(handleError)
 			.then(async (res) => {
 				setCredentials({ username, password });
+				localStorage.setItem("currentUser", username);
 				history.push("/dashboard");
-				return res;
+				window.location.reload();
+				// return res;
 			})
 			.catch((err) => {
 				setError(err.message);
 			});
-		addProject(data.projects);
-	};
-
-	const wrapperStyle = {
-		display: "flex",
-		alignItem: "center",
-		justifyContent: "center",
-		marginTop: "200px",
-		width: "100%",
-		height: "400px",
-		border: "1px solid black",
-	};
-
-	const containerStyle = {
-		// margin: "auto",
-		background: "white",
-		padding: "50px",
-		border: "1px solid black",
-		borderRadius: "5%",
-		display: "flex",
-		flexDirection: "column",
-		width: "30%",
+		// addProject(data.projects);
 	};
 
 	const buttonStyle = {
@@ -83,28 +65,36 @@ export default function Login({ addProject }) {
 
 	const history = useHistory();
 	return (
-		<div style={wrapperStyle}>
-			<div style={containerStyle}>
+		<div className="wrapperStyle">
+			<div className="containerStyle">
 				<h1>Login</h1>
 				{error && <span style={{ color: "red" }}>{error}</span>}
 				<form onSubmit={login}>
 					<input
+						className="login_input"
 						onChange={(e) => setUsername(e.target.value)}
 						placeholder="username"
 					></input>
 					<br />
 					<input
+						className="login_input"
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}
 						placeholder="password"
 					></input>
 					<br />
-					<button style={buttonStyle} type="submit">
+					<button className="login_button" style={buttonStyle} type="submit">
 						Login
 					</button>
 				</form>
+				<h3 className="register_prompt">
+					Don't have an account yet?{" "}
+					<Link className="register_now" to="/register">
+						Register now
+					</Link>
+				</h3>
 			</div>
-			<div style={containerStyle}>Test</div>
+			{/* <div style={containerStyle}>Test</div> */}
 		</div>
 	);
 }

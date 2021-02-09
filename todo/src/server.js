@@ -6,6 +6,9 @@ const app = express();
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
 
+// Server-side validation
+const { body, validationResult } = require("express-validator");
+
 const { User } = require("../database/User");
 const { Todo } = require("../database/Todo");
 const { Project } = require("../database/Project");
@@ -17,24 +20,40 @@ const port = 4000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/register", async (req, res) => {
-	const { username, password } = req.body;
-	const unique = await isUnique(username);
-	if (unique) {
-		console.log("Making new");
-		const newUser = await User.create({
-			username: username,
-			password: bcrypt.hashSync(password, salt),
-		});
-		res.json(newUser).status(200);
-	} else {
-		console.log("Already exists");
-		res.status(500);
-		res.json({ error: "User already exists" });
+app.post(
+	"/register",
+	body("password").isLength({ min: 6 }),
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res
+				.status(400)
+				.json({ error: "Password must be 6 characters long" });
+		}
+		const { username, password } = req.body;
+		const unique = await isUnique(username);
+		if (unique) {
+			console.log("Making new");
+			const newUser = await User.create({
+				username: username,
+				password: bcrypt.hashSync(password, salt),
+			});
+			res.json(newUser).status(200);
+		} else {
+			console.log("Already exists");
+			res.status(500);
+			res.json({ error: "User already exists" });
+		}
 	}
-});
+);
 
-app.post("/login", async (req, res) => {
+app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return res
+			.status(400)
+			.json({ error: "Password must be 6 characters long" });
+	}
 	const { username, password } = req.body;
 	console.log("Login success");
 	const user = await User.findOne({
@@ -75,9 +94,9 @@ app.post("/createProject", async (req, res) => {
 		});
 		res.json(newProject).status(200);
 	} else {
-	res.json(newProject).status(200);
-	alert(`${newProject} already exists`)
-	console.log(`${newProject} already exists`);
+		res.json(newProject).status(200);
+		alert(`${newProject} already exists`);
+		console.log(`${newProject} already exists`);
 	}
 });
 
@@ -85,18 +104,19 @@ app.post("/createProject", async (req, res) => {
 app.get("/getProjects", async (req, res) => {
 	const projects = await Project.findAll({
 		include: [
-			{model: Project, as: "projects",
-				include: [{model: Todo, as: "todos"
-					}]
-				}
-			],
-		})
+			{
+				model: Project,
+				as: "projects",
+				include: [{ model: Todo, as: "todos" }],
+			},
+		],
+	});
 	try {
-		res.render("project", {projects})
+		res.render("project", { projects });
 	} catch (Error) {
-		console.log(Error)
+		console.log(Error);
 	}
-})
+});
 
 app.get("/project/:id", async (req, res) => {
 	const project = await Project.findOne({
