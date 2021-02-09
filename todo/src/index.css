@@ -114,6 +114,12 @@ a {
 	width: 30%;
 	font-family: "Poppins";
 	opacity: 0.95;
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+	transform: translate(-50%, -50%);
+	justify-content: space-around;
 }
 
 .login_input,
