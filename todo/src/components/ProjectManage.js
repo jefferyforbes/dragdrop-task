@@ -6,7 +6,7 @@ function Project() {
     const url = "http://localhost:4000";
     const today = new Date();
     const [projectTitle, setProjectTitle] = useState("Project Title");
-    const [projectCreated, setProjectCreated] = useState();
+    const [projectCreated, setProjectCreated] = useState(today);
     const [projectDueDate, setDueDate] = useState();
     const [projectList, setProjectList] = useState(null)
     // const hostLocation = window.location.origin
@@ -44,12 +44,8 @@ useEffect(() => {
 
  // ------- Create New Project --------
     const useHandleInput = (event) => {
-
     event.preventDefault()
-
     console.log(`Title: ${projectTitle}, Created: ${projectCreated}, Due: ${projectDueDate}`)
-
-
 		const newProject = (
 			<div
 				style={{
@@ -70,12 +66,6 @@ useEffect(() => {
 			</div>
 		);
 
-		ReactDom.render(newProject, document.getElementById("testProjectArea"));
-
-
-
-		setProjectCreated(today);
-
 		fetch("http://localhost:4000/createProject", {
 			method: "POST",
 			headers: {
@@ -88,7 +78,6 @@ useEffect(() => {
 			}),
 		});
 	};
-
 
     // Media Query required at and below 600-610px
 
@@ -140,7 +129,6 @@ useEffect(() => {
     }
 
 return ( <div>
-
     <div style={{
         display: "flex",
         justifyContent: "center",
@@ -175,8 +163,6 @@ return ( <div>
     }}>
 
     </div>
-
 </div>
-
 )}
 export default Project;

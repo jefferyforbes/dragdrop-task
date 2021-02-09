@@ -102,20 +102,40 @@ app.post("/createProject", async (req, res) => {
 
 // Request All Projects
 app.get("/getProjects", async (req, res) => {
-	const projects = await Project.findAll({
+	const {currentUser} = req.body
+	// const currentUser = "testUser"
+
+	// const user = await User.findByPk(1)
+	// const user = await User.findOne({
+	// 	where: {username: currentUser}
+	// 	})
+
+
+
+		// await Board.findOne({
+        //     where:{
+        //         id : boardId
+        //     },
+        //     include: [
+        //         {model: Area, as: "areas",
+        //         include:[
+        //             {model: Task, as: "tasks"}
+        //         ]}
+        //     ]
+        // })
+
+
+	await User.findOne({
+		where: {user_id: currentUser},
 		include: [
-			{
-				model: Project,
-				as: "projects",
+			{model: Project, as: "projects",
 				include: [{ model: Todo, as: "todos" }],
 			},
 		],
 	});
-	try {
-		res.render("project", { projects });
-	} catch (Error) {
-		console.log(Error);
-	}
+	console.log("***" + res)
+	res.json()
+	console.log(res)
 });
 
 app.get("/project/:id", async (req, res) => {
