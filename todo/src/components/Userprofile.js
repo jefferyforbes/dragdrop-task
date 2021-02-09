@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CredentialsContext, ProjectsContext } from "../App";
+// import {} from "../../data/users.json";
 
 // function Userprofile() {
 //     return (
@@ -23,6 +24,7 @@ function Userprofile() {
             <label className="button" for="file">Edit Avatar</label>
             <input className="button" type="file" name="" id="file" accept="image"></input>
             <input className="button" type="text" name="" placeholder="Username"></input>
+            {/* {{this.username}} */}
             <input className="button" type="email" name="" placeholder="Email ID"></input>
             <input className="button" type="text" name="" placeholder="Managed by:"></input>
             <input className="button" type="text" name="" placeholder="Gender"></input>
