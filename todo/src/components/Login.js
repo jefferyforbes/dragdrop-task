@@ -33,7 +33,9 @@ export default function Login({ addProject }) {
 		})
 			.then(handleError)
 			.then(async (res) => {
-				setCredentials({ username, password });
+				// console.log(res);
+				const avatar = res.userAvatar;
+				setCredentials({ username, password, avatar });
 				localStorage.setItem("currentUser", username);
 				history.push("/dashboard");
 				window.location.reload();
