@@ -9,7 +9,6 @@ function ProjectPage({ projects, setProjects }) {
 	const currentProject = projects.find(function (project) {
 		return project.id == id;
 	});
-
 	const handleDragEnd = (result) => {
 		console.log(result);
 		// projects.map((project) => console.log(project.todos));
@@ -19,7 +18,6 @@ function ProjectPage({ projects, setProjects }) {
 		);
 		console.log(item);
 	};
-
 	return (
 		<DragDropContext onDragEnd={handleDragEnd}>
 			<div className="todo_container">

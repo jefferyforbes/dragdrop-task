@@ -2,46 +2,11 @@ import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 
 function Project() {
-
-    const url = "http://localhost:4000";
     const today = new Date();
     const [projectTitle, setProjectTitle] = useState("Project Title");
     const [projectCreated, setProjectCreated] = useState(today);
     const [projectDueDate, setDueDate] = useState();
-    const [projectList, setProjectList] = useState(null)
-    // const hostLocation = window.location.origin
-    // console.log(hostLocation)
-
-// -------- Request All Projects --------
-// setTimeout(() => {
-//     fetch("http://localhost:4000/getProjects")
-// .then (res => {
-//     if (res.ok) {
-//         console.log("Success, got all projects")
-//         setProjectList(res.data)
-//     } else {
-//         console.log("Not Successful")
-//     }
-// })
-// console.log(projectList)
-// }, 555000);
-
-useEffect(() => {
-}, [projectList])
-
-// setTimeout(() => {
-//     fetch("https://6020f3fb46f1e4001780392c.mockapi.io/getApi/users")
-// .then (res => {
-//     if (res.ok) {
-//         console.log("Success, got all projects")
-//         setProjectList(res.data)
-//     } else {
-//         console.log("Not Successful")
-//     }
-// })
-// console.log(projectList)
-// }, 3000);
-
+    const [projectList, setProjectList] = useState([null])
  // ------- Create New Project --------
     const useHandleInput = (event) => {
     event.preventDefault()
@@ -65,7 +30,6 @@ useEffect(() => {
 				<p>Due Date: {projectDueDate}</p>
 			</div>
 		);
-
 		fetch("http://localhost:4000/createProject", {
 			method: "POST",
 			headers: {
@@ -80,7 +44,6 @@ useEffect(() => {
 	};
 
     // Media Query required at and below 600-610px
-
     const buttonStyle = {
 		display: "inline-block",
 		margin: "0",
@@ -98,7 +61,6 @@ useEffect(() => {
 		cursor: "pointer",
 		marginTop: "20px",
 	};
-
     const projectTitleContainer = {
         marginTop: "5rem",
         fontSize: "1.8rem",
@@ -114,7 +76,6 @@ useEffect(() => {
 		border: "4px solid black",
         borderRadius: "12px",
     }
-
     const inputStyle = {
         fontSize: "1.2rem",
         marginTop: "0.6rem",
@@ -127,7 +88,6 @@ useEffect(() => {
         borderRadius: "5px",
         opacity: "0.75"
     }
-
 return ( <div>
     <div style={{
         display: "flex",
@@ -135,7 +95,6 @@ return ( <div>
         alignContent: "center",
     }}>
         <form onSubmit={useHandleInput} style={projectTitleContainer}>
-            {/* The form could be refactored using the reducer hook as it is preferable as the industry standard */}
             <div>
                 <label for="projectTitle">Project Title: </label>
                 <input type="text" name="projectTitle" style={inputStyle} required value={projectTitle} onChange={event => setProjectTitle(event.target.value)} />
@@ -147,7 +106,6 @@ return ( <div>
         <input type="submit" style={buttonStyle} value="Submit" />
         </form>
     </div>
-
     <div id="testProjectArea" style={{
         display: "flex",
         minWidth: "20rem",

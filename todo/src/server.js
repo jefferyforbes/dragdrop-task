@@ -1,22 +1,17 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
 // Password hashing
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
-
 // Server-side validation
 const { body, validationResult } = require("express-validator");
-
 const { User } = require("../database/User");
 const { Todo } = require("../database/Todo");
 const { Project } = require("../database/Project");
 const { loop } = require("../database/Loop");
 const { readdirSync } = require("fs");
-
 const port = 4000;
-
 app.use(cors());
 app.use(express.json());
 
@@ -93,48 +88,30 @@ app.post("/createProject", async (req, res) => {
 			dueAt: projectDueDate,
 		});
 		res.json(newProject).status(200);
-	} else {
-		res.json(newProject).status(200);
-		alert(`${newProject} already exists`);
-		console.log(`${newProject} already exists`);
-	}
+	} else { console.log("Error!")}
 });
 
 // Request All Projects
-app.get("/getProjects", async (req, res) => {
-	const {currentUser} = req.body
-	// const currentUser = "testUser"
+app.post("/getProjects", async (req, res) => {
+	console.log("Entered getProjects!")
+	const {currentUser, projectList} = req.body
 
-	// const user = await User.findByPk(1)
-	// const user = await User.findOne({
-	// 	where: {username: currentUser}
-	// 	})
-
-
-
-		// await Board.findOne({
-        //     where:{
-        //         id : boardId
-        //     },
-        //     include: [
-        //         {model: Area, as: "areas",
-        //         include:[
-        //             {model: Task, as: "tasks"}
-        //         ]}
-        //     ]
-        // })
-
-	await User.findOne({
-		where: {user_id: currentUser},
+	console.log({currentUser})
+	const user = await User.findOne({
+		where: {username: currentUser},
 		include: [
 			{model: Project, as: "projects",
 				include: [{ model: Todo, as: "todos" }],
 			},
 		],
+		nest: true,
 	});
-	console.log("***" + res)
-	res.json()
-	console.log(res)
+	const projects = await user.getProjects()
+	console.log("***" + projects)
+	res.json(projects)
+	console.log("*** finally" + projects)
+	console.log("Testing user" + user)
+	res.json(user)
 });
 
 app.get("/project/:id", async (req, res) => {
@@ -150,7 +127,7 @@ app.get("/project/:id", async (req, res) => {
 		],
 		nest: true,
 	});
-	res.json(project);
+	res.json({project});
 });
 
 app.listen(port, () => {

@@ -30,7 +30,6 @@ function Userprofile() {
             <button className="button1"> Cancel changes </button>
         </div>
     )
-
     // const [credentials] = useContext(CredentialsContext);
 	// return (
 	// 	<div className="userProfile">

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { CredentialsContext } from "../App";
-
 import { handleError } from "./Login";
 
 export default function Register() {
@@ -9,7 +8,6 @@ export default function Register() {
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const [, setCredentials] = useContext(CredentialsContext);
-
 	const register = async (e) => {
 		e.preventDefault();
 		const data = await fetch("http://localhost:4000/register", {
@@ -34,13 +32,6 @@ export default function Register() {
 			});
 		console.log(data);
 	};
-
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		setError("");
-	// 	}, 3000);
-	// }, [error]);
-
 	const buttonStyle = {
 		display: "inline-block",
 		margin: "0",
@@ -58,14 +49,13 @@ export default function Register() {
 		cursor: "pointer",
 		marginTop: "20px",
 	};
-
 	const history = useHistory();
 	return (
 		<div className="wrapperStyle">
 			<div className="containerStyle">
 				<h1>Register</h1>
 				{error && <span style={{ color: "red" }}>{error}</span>}
-				<form onSubmit={register}>
+				<form onSubmit={register} data-testid="registerForm">
 					<input
 						className="register_input"
 						onChange={(e) => setUsername(e.target.value)}

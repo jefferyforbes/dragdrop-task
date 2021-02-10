@@ -220,7 +220,7 @@ function App() {
 							<ProjectPage setProjects={setProjects} projects={projects} />
 						</Route>
 						<Route exact path="/projectoverview">
-							{/* <Project /> */}
+							<Project />
 							{/* <Task /> */}
 						</Route>
 					</Switch>
