@@ -302,14 +302,23 @@ a {
 
 .project_title_banner {
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.342);
+	background-color: rgba(0, 0, 0, 0.541);
+	/* display: flex; */
+	/* align-content: center; */
+	/* justify-content: center; */
+	justify-content: space-between;
+}
+
+.project_subcontainer {
+	width: 88%;
 	display: flex;
-	align-content: center;
-	justify-content: center;
+	margin: 0 auto;
 }
 
 .project_header {
 	display: flex;
+	/* margin-left: 45%; */
+	text-align: center;
 	color: white;
 }
 
@@ -329,6 +338,7 @@ a {
 	background-color: rgba(0, 0, 0, 0.5);
 	color: white;
 	margin-top: -10px;
+	transition: all 250ms ease-in-out;
 }
 
 .project_add * {
@@ -383,7 +393,8 @@ a {
 	border: none;
 }
 
-.project_add_btn {
+.project_add_btn,
+.colourblind_btn {
 	margin: auto;
 	padding: 8px 16px;
 	border: none;
@@ -393,4 +404,63 @@ a {
 	letter-spacing: 0.09em;
 	border-radius: 2px;
 	cursor: pointer;
+	transition: all 250ms ease-in-out;
+}
+
+.colourblind_btn {
+	margin-right: 0;
+}
+
+.project_add_btn:hover,
+.colourblind_btn:hover {
+	opacity: 0.7;
+}
+
+.project_add_btn_wrapper {
+	margin: 0 auto;
+	width: 100%;
+	display: flex;
+}
+
+.project_add_btn_wrapper button {
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.icon {
+	transition: all 250ms ease-in-out;
+}
+
+.icon:hover {
+	border-radius: 15%;
+	background-color: slategray;
+}
+
+.todo_form ul li {
+	width: 100%;
+	/* border: 2px solid green; */
+}
+
+.add_todo_container {
+	display: flex;
+	flex-direction: column;
+	/* border: 1px solid red; */
+	width: 90%;
+}
+
+.todo_input {
+	margin-bottom: 10px;
+	height: auto;
+	min-height: 30px;
+	border: none;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.342);
+	width: 90%;
+}
+
+.todo_input:hover {
+	cursor: text;
+}
+
+.add_todo_container input:focus {
+	outline: none;
 }

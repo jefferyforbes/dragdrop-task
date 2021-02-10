@@ -2,23 +2,48 @@ import React, { useState } from "react";
 import { VscEdit } from "react-icons/vsc";
 import { VscClose } from "react-icons/vsc";
 import { VscCheck } from "react-icons/vsc";
+import { VscTrash } from "react-icons/vsc";
 import { DragSource } from "react-dnd";
 
-function Todo({ todo, deleteTodo }) {
+function Todo({ todo, deleteTodo, handleEdit }) {
 	const [edit, setEdit] = useState(false);
-	const { id, title, body } = todo;
+	const { id, title, body, status } = todo;
+	const [currentTitle, setCurrentTitle] = useState(title);
+	const [currentBody, setCurrentBody] = useState(body);
 	const onClick = (e) => {
 		console.log(e);
 		setEdit(!edit);
 	};
-	const onSave = (e) => {
-		console.log(e);
-		setEdit(!edit);
+
+	const updateTodo = async () => {
+		const newTodo = await fetch("http://localhost:4000/todos", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				id: id,
+				title: currentTitle,
+				body: currentBody,
+				status: status,
+			}),
+		});
+		return newTodo.json();
 	};
 
-	const onDelete = () => {
-		deleteTodo(id);
+	const onSave = async () => {
+		const newTodo = await updateTodo();
+		// console.log(newTodo.todo);
+		handleEdit(newTodo.todo);
+		setEdit(false);
+		console.log(id);
+		// setEdit(!edit);
 	};
+
+	// const onEdit = () => {
+	// 	// deleteTodo(id);
+	// 	console.log(id);
+	// };
 
 	return (
 		<>
@@ -26,7 +51,7 @@ function Todo({ todo, deleteTodo }) {
 				<div>
 					<ul>
 						<li draggable="true" className="draggable">
-							<div>
+							<div className="doot">
 								<h4>
 									<span style={{ display: edit ? "none" : "inline" }}>
 										{title}
@@ -36,23 +61,53 @@ function Todo({ todo, deleteTodo }) {
 										style={{
 											display: edit ? "block" : "none",
 										}}
-										value={title}
+										onChange={(e) => setCurrentTitle(e.target.value)}
+										value={currentTitle}
 									/>
 									<input
 										className="todo_input"
 										style={{ display: edit ? "inline" : "none" }}
-										value={body}
+										value={currentBody}
+										onChange={(e) => setCurrentBody(e.target.value)}
 									/>
 									{edit ? (
-										<VscCheck className="icon" onClick={onSave} />
+										<VscCheck
+											className="icon"
+											onClick={onSave}
+											style={{ fontSize: "1.5rem", padding: "3px" }}
+										/>
 									) : (
-										<VscEdit className="icon" onClick={onClick} />
+										<VscEdit
+											className="icon"
+											onClick={onClick}
+											style={{ fontSize: "1.5rem", padding: "3px" }}
+										/>
 									)}
-									<VscClose
-										className="icon"
-										onClick={() => deleteTodo(id)}
-										style={{ color: "red" }}
-									/>
+									{edit ? (
+										<VscClose
+											className="icon"
+											onClick={() => {
+												setEdit(false);
+												setCurrentTitle(title);
+												setCurrentBody(body);
+											}}
+											style={{
+												color: "red",
+												fontSize: "1.5rem",
+												padding: "3px",
+											}}
+										/>
+									) : (
+										<VscTrash
+											className="icon"
+											onClick={() => deleteTodo(id)}
+											style={{
+												color: "red",
+												fontSize: "1.5rem",
+												padding: "3px",
+											}}
+										/>
+									)}
 								</h4>
 								<p style={{ display: edit ? "none" : "inline" }}>{body} </p>
 							</div>

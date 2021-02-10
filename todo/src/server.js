@@ -211,26 +211,26 @@ app.delete("/todo/:id", async (req, res) => {
 	res.json({ message: "Todo deleted succesfully" });
 });
 
-app.delete("/todo/:id", async (req, res) => {
-	await Todo.destroy({
-		where: {
-			id: req.params.id,
-		},
-	});
-	res.status(200);
-	res.json({ message: "Todo deleted succesfully" });
-});
+// app.delete("/todo/:id", async (req, res) => {
+// 	await Todo.destroy({
+// 		where: {
+// 			id: req.params.id,
+// 		},
+// 	});
+// 	res.status(200);
+// 	res.json({ message: "Todo deleted succesfully" });
+// });
 
-app.put("/todo/:id", async (req, res) => {
-	const { title, body, status } = req.body;
-	let todo = await Todo.findByPk(req.params.id);
+app.put("/todos", async (req, res) => {
+	const { id, title, body, status } = req.body;
+	let todo = await Todo.findByPk(id);
 	todo.title = title;
 	todo.body = body;
 	todo.status = status;
 	todo.save();
 	// await Project.update({ title }, { where: req.params.id });
 	console.log(todo);
-	res.json({ message: "Todo updated succesfully" });
+	res.json({ todo });
 });
 
 app.listen(port, () => {

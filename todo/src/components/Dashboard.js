@@ -8,6 +8,7 @@ function Dashboard({ projects, setProjects }) {
 	const [projectTitle, setProjectTitle] = useState("");
 	const [projectCreated, setProjectCreated] = useState();
 	const [projectDueDate, setDueDate] = useState();
+	const [add, setAdd] = useState(false);
 
 	const newDay = new Date();
 	const userId = localStorage.getItem("currentUser");
@@ -57,7 +58,7 @@ function Dashboard({ projects, setProjects }) {
 
 	return (
 		<div>
-			<div className="project_add">
+			<div className="project_add" style={{ display: add ? "flex" : "none" }}>
 				<form onSubmit={useHandleInput}>
 					<div className="flex_outer">
 						<li>
@@ -87,6 +88,11 @@ function Dashboard({ projects, setProjects }) {
 						<input className="project_add_btn" type="submit" value="Submit" />
 					</div>
 				</form>
+			</div>
+			<div className="project_add_btn_wrapper">
+				<button onClick={() => setAdd(!add)} className="project_add_btn">
+					{add ? "Close" : "Add new project"}
+				</button>
 			</div>
 			<div className="project_wrapper">
 				{projects &&
