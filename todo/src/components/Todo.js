@@ -4,9 +4,9 @@ import { VscClose } from "react-icons/vsc";
 import { VscCheck } from "react-icons/vsc";
 import { DragSource } from "react-dnd";
 
-function Todo({ todo }) {
+function Todo({ todo, deleteTodo }) {
 	const [edit, setEdit] = useState(false);
-	const { id, name, body } = todo;
+	const { id, title, body } = todo;
 	const onClick = (e) => {
 		console.log(e);
 		setEdit(!edit);
@@ -15,6 +15,11 @@ function Todo({ todo }) {
 		console.log(e);
 		setEdit(!edit);
 	};
+
+	const onDelete = () => {
+		deleteTodo(id);
+	};
+
 	return (
 		<>
 			<div>
@@ -24,14 +29,14 @@ function Todo({ todo }) {
 							<div>
 								<h4>
 									<span style={{ display: edit ? "none" : "inline" }}>
-										{name}
+										{title}
 									</span>{" "}
 									<input
 										className="todo_input"
 										style={{
 											display: edit ? "block" : "none",
 										}}
-										value={name}
+										value={title}
 									/>
 									<input
 										className="todo_input"
@@ -45,7 +50,7 @@ function Todo({ todo }) {
 									)}
 									<VscClose
 										className="icon"
-										onClick={onClick}
+										onClick={() => deleteTodo(id)}
 										style={{ color: "red" }}
 									/>
 								</h4>

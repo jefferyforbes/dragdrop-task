@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { CredentialsContext } from "../App";
 import M from "materialize-css";
 import Login from "./Login";
 
-function Navbar() {
+function Navbar({ projects, setProjects }) {
 	// const [credentials] = useContext(CredentialsContext);
 	const credentials = localStorage.getItem("currentUser");
 	const history = useHistory();
+	const [search, setSearch] = useState("");
 
 	useEffect(() => {
 		M.AutoInit();
@@ -17,6 +18,16 @@ function Navbar() {
 		console.log("Click");
 		localStorage.removeItem("currentUser");
 		history.push("/");
+	};
+
+	const handleOnChange = (e) => {
+		setSearch(e.target.value);
+		// const regexStr = '(?=.*' + searchString.split(/\,|\s/).join(')(?=.*') + ')';
+		const searchProjects = [...projects];
+		const reducedProjects = searchProjects.filter((project) => {
+			return project.includes(search);
+		});
+		console.log(reducedProjects);
 	};
 
 	return (
@@ -30,25 +41,25 @@ function Navbar() {
 								USER PROFILE
 							</Link>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li>{credentials ? <Link to="/dashboard">DASHBOARD</Link> : ""}</li>
 					<li>
 						{credentials ? (
 							<Link to="/projectoverview"> PROJECT OVERVIEW</Link>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li className="user">
 						{credentials ? (
 							<a onClick={handleLogout} href="/">
-								LOG OUT 
+								LOG OUT
 							</a>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li className="user">
 						{credentials ? <Link to="/userprofile">ACCOUNT</Link> : ""}
@@ -59,7 +70,13 @@ function Navbar() {
 					<li className="searchBar">
 						<div class="growing-search">
 							<div class="input">
-								<input type="text" placeholder="Search..." name="search" />
+								<input
+									onChange={handleOnChange}
+									value={search}
+									type="text"
+									placeholder="Search..."
+									name="search"
+								/>
 							</div>
 							<div class="submit">
 								<button type="submit" name="go_search">
@@ -69,13 +86,21 @@ function Navbar() {
 						</div>
 					</li>
 				</ul>
-				{credentials ? "" : <div className="footer">
-				<div className="footer-text">Already have an account with us? <Link to="/login"><button className="footer-button" id="footerbutton">
-					Log in now </button> </Link>
-				</div>
-			</div>}
+				{credentials ? (
+					""
+				) : (
+					<div className="footer">
+						<div className="footer-text">
+							Already have an account with us?{" "}
+							<Link to="/login">
+								<button className="footer-button" id="footerbutton">
+									Log in now{" "}
+								</button>{" "}
+							</Link>
+						</div>
+					</div>
+				)}
 			</nav>
-
 
 			{/* <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
 				Modal
