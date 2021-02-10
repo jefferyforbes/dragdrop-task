@@ -18,8 +18,10 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 	const [todos, setTodos] = useState([]);
 	const [add, setAdd] = useState(false);
 	const [colourblind, setColourblind] = useState(false);
+	const [projectTitle, setProjectTitle] = useState("");
 	const [todoTitle, setTodoTitle] = useState("");
 	const [todoBody, setTodoBody] = useState("");
+	const [titleEdit, setTitleEdit] = useState(false);
 
 	const history = useHistory();
 
@@ -73,6 +75,19 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 		return newTodo.json();
 	};
 
+	const fetchProject = async () => {
+		const newTodo = await fetch(`http://localhost:4000/project/${id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				title: projectTitle,
+			}),
+		});
+		return newTodo.json();
+	};
+
 	const handleAddTodo = async (event) => {
 		event.preventDefault();
 		// const newTodo = await fetch("http://localhost:4000/todos", {
@@ -112,22 +127,38 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 		// console.log(todo);
 	};
 
+	const handleProjectEdit = async () => {
+		const result = await fetchProject();
+		console.log(result);
+		setTitleEdit(false);
+	};
+
 	return (
 		<>
 			<div className="project_title_banner" style={{ fontFamily: "poppins" }}>
 				<div className="project_subcontainer">
 					<div className="project_header">
 						<h2
+							onKeyDown={(e) => {
+								setTitleEdit(true);
+								setProjectTitle(e.target.innerHTML);
+							}}
+							contentEditable
 							style={{
 								padding: "5px",
 								color: "white",
 								cursor: "default",
-								textTransform: "uppercase",
+								// textTransform: "uppercase",
 							}}
 							className="project_title"
 						>
 							{currentProject && currentProject.title}
 						</h2>
+						<VscCheck
+							onClick={handleProjectEdit}
+							className="icon project_delete"
+							style={{ padding: "5px", display: titleEdit ? "inline" : "none" }}
+						/>
 						<VscTrash
 							style={{ padding: "5px" }}
 							onClick={handleProjectDelete}
