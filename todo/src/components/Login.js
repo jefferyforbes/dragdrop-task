@@ -73,6 +73,7 @@ export default function Login({ addProject }) {
 				{error && <span style={{ color: "red" }}>{error}</span>}
 				<form onSubmit={login}>
 					<input
+					id="username"
 						className="login_input"
 						onChange={(e) => setUsername(e.target.value)}
 						placeholder="username"

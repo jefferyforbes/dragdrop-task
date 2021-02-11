@@ -33,7 +33,8 @@ function Userprofile() {
 
     const profileInput = (event) => {
         event.preventDefault();
-        fetch("http://localhost:4000/editprofile", {
+        const newAvatarData = new FormData(newAvatar)
+        fetch("http://localhost:4000/editProfile", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -47,6 +48,21 @@ function Userprofile() {
         console.log(`current Username: ${currentUser}, New Avatar: ${newAvatar}, New Username: ${newUsername}`)
     }
 
+
+    //Using the request with formdata
+    // event.preventDefault();
+    //     const newAvatarData = new FormData(newAvatar)
+    //     fetch("http://localhost:4000/editProfile", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({
+	// 			newAvatar,
+    //             newUsername
+	// 		}), newAvatarData
+    //         .then(console.log(Response.JSON()))
+	// 	});
     return (
         <form onSubmit={profileInput}>
             <div className="box">

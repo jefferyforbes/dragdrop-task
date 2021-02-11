@@ -7,7 +7,7 @@ describe("Page Load Testing",  function() {
     })
 })
 
-describe("Limited Access Testing",  function() {
+describe("Limited Access Testing: Should Return False",  function() {
     it("Dashboard Page loads", function(){
         cy.visit("http://localhost:3000/dashboard")
     })
@@ -19,28 +19,21 @@ describe("Limited Access Testing",  function() {
     })
 })
 
-describe("New Test", function () {
-    it("", function () {
-        cy.get("button").click()
+describe("Home Page Button Checks", function () {
+    it("All Buttons", function () {
+        cy.get("button").click({multiple: true})
+    })
+    it("Check Log In now", function() {
+        cy.visit("http://localhost:3000")
+        cy.contains("Log in now").click()
+        cy.url().should("include", "/login")
     })
 })
 
-// describe("Home Page Elements Test",  function() {
-//     cy.get('button').then(($btn) => {
-//         if ($btn.hasClass('active')) {
-//           // do something if it's active
-//         } else {
-//           // do something else
-//         }
-//     })
-// })
-
-// describe("New",  function() {
-//     cy.visit().then(($btn) => {
-//         if ($btn.hasClass('active')) {
-//           // do something if it's active
-//         } else {
-//           // do something else
-//         }
-//     })
-// })
+describe("Login Page Functionality", function () {
+    it("Check Log In now", function() {
+        cy.visit("http://localhost:3000/login")
+        cy.get("#username")
+        .type("notARegisteredUser")
+    })
+})
