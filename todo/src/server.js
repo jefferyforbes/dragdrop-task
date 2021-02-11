@@ -265,10 +265,6 @@ function projectCheck(projectTitle) {
 
 // User profile
 
-app.post("/editprofile", async (req, res) => {
-	const { currentUser } = req.body;
-});
-
 app.post("/createProject", async (req, res) => {
 	const { projectTitle, projectCreated, projectDueDate } = req.body;
 	if (projectCheck) {

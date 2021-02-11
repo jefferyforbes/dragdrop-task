@@ -10,6 +10,11 @@ import { VscTrash } from "react-icons/vsc";
 import { VscAdd } from "react-icons/vsc";
 import Project from "./ProjectManage";
 
+/**
+ * 
+ * @param {string} todos dsadasdasda
+ */
+
 function ProjectPage({ projects, setProjects, deleteTodo }) {
 	const { id } = useParams();
 	let currentProject = projects.find(function (project) {
