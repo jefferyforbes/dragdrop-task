@@ -71,7 +71,7 @@ a {
 	padding-left: 5px;
 	padding-bottom: 5px;
 	width: 55px;
-	color:black;
+	color: black;
 	border-bottom: 1px solid black;
 }
 
@@ -313,12 +313,12 @@ a {
 }
 
 .todo-text {
-	background-color:white;
+	background-color: white;
 	color: black;
 	text-indent: top;
 	padding: 10px;
-} 
-=======
+}
+
 .project_title_banner {
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.541);
