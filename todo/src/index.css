@@ -318,3 +318,23 @@ a {
 	text-indent: top;
 	padding: 10px;
 } 
+=======
+.project_title_banner {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.342);
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+.project_header {
+	display: flex;
+	color: white;
+}
+
+.project_delete {
+	color: red;
+	font-size: 2rem;
+	font-weight: 700;
+}
+

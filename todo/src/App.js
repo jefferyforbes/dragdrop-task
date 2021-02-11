@@ -172,11 +172,11 @@ function App() {
 	]);
 	// const projectsState = useState(null);
 
-	// useEffect(() => {
-	// 	const fetchProjects = async () => {
-	// 		const res = await fetch('http://localhost:4000/')
-	// 	}
-	// })
+	useEffect(() => {
+		const fetchProjects = async () => {
+			const res = await fetch("http://localhost:4000/");
+		};
+	});
 
 	const addToState = (projects) => {
 		setProjects(projects);

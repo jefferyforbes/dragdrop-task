@@ -1,3 +1,5 @@
 /node-modules
 /todo/node-modules
 /todos.sqlite
+*.sqlite
+
