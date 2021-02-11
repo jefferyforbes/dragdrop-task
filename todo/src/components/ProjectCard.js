@@ -9,7 +9,7 @@ function ProjectCard({ project }) {
 	return (
 		<div className="project">
 			<div className="project_title">
-				<h2>{title}</h2>
+				<h2 className="project_text">{title}</h2>
 			</div>
 			<div className="progress_bar">
 				<h3>Progress bar here</h3>

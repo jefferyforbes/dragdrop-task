@@ -41,25 +41,18 @@ function Navbar({ projects, setProjects }) {
 								USER PROFILE
 							</Link>
 						) : (
-							""
-						)}
+								""
+							)}
 					</li>
 					<li>{credentials ? <Link to="/dashboard" alt="Dashboard">DASHBOARD</Link> : ""}</li>
-					<li>
-						{credentials ? (
-							<Link to="/projectoverview" alt="Project overview"> PROJECT OVERVIEW</Link>
-						) : (
-							""
-						)}
-					</li>
 					<li className="user">
 						{credentials ? (
 							<a onClick={handleLogout} href="/" alt="Log out">
 								LOG OUT
 							</a>
 						) : (
-							""
-						)}
+								""
+							)}
 					</li>
 					<li className="user">
 						{credentials ? <Link to="/userprofile" aria-label="User Profile">ACCOUNT</Link> : ""}
@@ -76,8 +69,8 @@ function Navbar({ projects, setProjects }) {
 									type="text"
 									placeholder="Search..."
 									name="search"
-                  aria-label="Search Bar"
-                  color="black"
+									aria-label="Search Bar"
+									color="black"
 								/>
 							</div>
 							<div class="submit">
@@ -89,10 +82,10 @@ function Navbar({ projects, setProjects }) {
 					</li>
 				</ul>
 				{credentials ? "" : <div className="footer">
-				<div className="footer-text">Already have an account with us? <Link to="/login" aria-label="Log into account"><button className="footer-button" id="footerbutton">
-					Log in now </button> </Link>
-				</div>
-			</div>}
+					<div className="footer-text">Already have an account with us? <Link to="/login" aria-label="Log into account"><button className="footer-button" id="footerbutton">
+						Log in now </button> </Link>
+					</div>
+				</div>}
 			</nav>
 
 			{/* <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
