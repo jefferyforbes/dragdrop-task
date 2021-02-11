@@ -23,10 +23,10 @@ export default function Register() {
 			}),
 		})
 			.then(handleError)
-			.then(() => {
+			.then((res) => {
 				setCredentials({ username, password });
-				localStorage.setItem("currentUser", username);
-				history.push("/");
+				localStorage.setItem("currentUser", res.id);
+				history.push("/dashboard");
 				window.location.reload();
 			})
 			.catch((err) => {

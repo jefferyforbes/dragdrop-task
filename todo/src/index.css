@@ -232,17 +232,16 @@ a {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-  height: auto;
-  
+	height: auto;
 } */
 
 .progress_bar {
 	margin-top: 40px;
-	color:rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0, 0.5);
 }
 
 .project_title {
-	color:rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0, 0.5);
 }
 
 .project_wrapper {
@@ -492,3 +491,7 @@ a {
 .add_todo_container input:focus {
 	outline: none;
 }
+
+/* .todo_wrapper {
+	display: flex;
+} */

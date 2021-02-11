@@ -36,7 +36,7 @@ app.post(
 		if (!errors.isEmpty()) {
 			return res
 				.status(400)
-				.json({ error: "Password must be 6 characters long" });
+				.json({ error: "Password must be at least 6 characters long" });
 		}
 		const { username, password } = req.body;
 		const unique = await isUnique(username);

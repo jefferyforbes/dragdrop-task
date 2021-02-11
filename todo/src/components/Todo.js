@@ -5,7 +5,7 @@ import { VscCheck } from "react-icons/vsc";
 import { VscTrash } from "react-icons/vsc";
 import { DragSource } from "react-dnd";
 
-function Todo({ todo, deleteTodo, handleEdit }) {
+function Todo({ todo, deleteTodo, handleEdit, index }) {
 	const [edit, setEdit] = useState(false);
 	const { id, title, body, status } = todo;
 	const [currentTitle, setCurrentTitle] = useState(title);
@@ -50,7 +50,7 @@ function Todo({ todo, deleteTodo, handleEdit }) {
 			<div>
 				<div>
 					<ul>
-						<li draggable="true" className="draggable">
+						<li className="draggable">
 							<div className="doot">
 								<h4>
 									<span style={{ display: edit ? "none" : "inline" }}>

@@ -4,7 +4,13 @@ import React, { useEffect } from "react";
 import Home from "./components/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	Redirect,
+} from "react-router-dom";
 import Task from "./components/Task";
 
 // import Project from "./components/Project";
@@ -81,7 +87,12 @@ function App() {
 			>
 				<Router>
 					<Route path="/">
-						<Navbar projects={projects} setProjects={setProjects} />
+						<Navbar
+							userId={userId}
+							setUserId={setUserId}
+							projects={projects}
+							setProjects={setProjects}
+						/>
 					</Route>
 					<Switch>
 						<Route exact path="/">
@@ -93,6 +104,32 @@ function App() {
 						<Route exact path="/login">
 							<Login addProject={addToState} />
 						</Route>
+						{/* <Route
+							render={(props) =>
+								userId ? (
+									<Dashboard projects={projects} setProjects={setProjects} />
+								) : (
+									<Redirect
+										to={{
+											pathname: "/register",
+										}}
+									/>
+								)
+							}
+						/> */}
+						{/* <Route
+							render={(props) =>
+								userId ? (
+									<Userprofile  />
+								) : (
+									<Redirect
+										to={{
+											pathname: "/register",
+										}}
+									/>
+								)
+							}
+						/> */}
 						<Route exact path="/dashboard">
 							<Dashboard projects={projects} setProjects={setProjects} />
 						</Route>

@@ -133,6 +133,15 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 		setTitleEdit(false);
 	};
 
+	const handleOnDragEnd = (result) => {
+		if (!result.destination) return;
+		console.log(result);
+		const items = Array.from(todos);
+		const [reorderedItem] = items.splice(result.source.index, 1);
+		items.splice(result.destination.index, 0, reorderedItem);
+		setTodos(todos);
+	};
+
 	return (
 		<>
 			<div className="project_title_banner" style={{ fontFamily: "poppins" }}>
@@ -173,18 +182,24 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 					</button>
 				</div>
 			</div>
-			<DragDropContext onDragEnd={handleDragEnd}>
+			{/* <DragDropContext onDragEnd={handleDragEnd}> */}
+			<DragDropContext onDragEnd={handleOnDragEnd}>
 				<div style={{ fontFamily: "poppins" }} className="todo_container">
 					{/* {currentProject.todos.map((todo) => (
 				<Todo todo={todo} />
 			))} */}
 					<div className="todo_wrapper">
-						<Droppable droppableId="todos">
-							{(provided) => (
-								<ul {...provided.droppableProps} ref={provided.innerRef}>
-									<li>
-										{/* <ReactSortable list={currentProject.todos} setList={setProjects}> */}
+						{/* <Droppable droppableId="todos"> */}
+
+						<ul>
+							<li>
+								{/* <ReactSortable list={currentProject.todos} setList={setProjects}> */}
+								{/* <DragDropContext onDragEnd={handleOnDragEnd}> */}
+								<Droppable droppableId="todos_1">
+									{(provided) => (
 										<div
+											{...provided.droppableProps}
+											ref={provided.innerRef}
 											style={{
 												backgroundImage: colourblind
 													? "url('https://i.pinimg.com/originals/80/2b/95/802b954e60cfbb08c9ff5af28feef6a8.png')"
@@ -192,14 +207,17 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 											}}
 											className="todo_column todo_current"
 										>
-											<h2 className="todo-text" aria-label="To Do">
+											<h2
+												className={colourblind ? "todo-text" : ""}
+												aria-label="To Do"
+											>
 												Todo
 											</h2>
 											{todos.map((todo, index) => {
 												return todo.status == 1 ? (
 													<Draggable
 														key={todo.id}
-														draggableId={todo.name}
+														draggableId={todo.title}
 														index={index}
 													>
 														{(provided) => (
@@ -212,6 +230,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 																	handleEdit={handleEdit}
 																	deleteTodo={handleDelete}
 																	todo={todo}
+																	index={index}
 																/>
 															</li>
 														)}
@@ -274,112 +293,114 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 													/>
 												)}
 											</div>
+											{provided.placeholder}
 										</div>
-									</li>
-									{provided.placeholder}
-								</ul>
-							)}
-						</Droppable>
-					</div>
-					<div>
-						<ul>
-							<li>
-								<div
-									style={{
-										backgroundImage: colourblind
-											? "url('https://st.depositphotos.com/1422675/1686/i/600/depositphotos_16864461-stock-photo-seamless-black-white-diagonal-stripes.jpg')"
-											: "",
-									}}
-									className="todo_column todo_in_progress"
-								>
-									<h2 className="todo-text">In progress</h2>
-									{todos.map((todo) => {
-										return todo.status == 2 ? (
-											<li>
-												<Todo
-													handleEdit={handleEdit}
-													deleteTodo={handleDelete}
-													todo={todo}
-												/>
-											</li>
-										) : (
-											""
-										);
-									})}
-								</div>
+									)}
+								</Droppable>
+								{/* </DragDropContext> */}
 							</li>
 						</ul>
 					</div>
 					<div>
 						<ul>
 							<li>
-								<div
-									style={{
-										backgroundImage: colourblind
-											? "url('https://cdn2.vectorstock.com/i/1000x1000/71/36/seamless-black-white-polka-dot-pattern-vector-7737136.jpg')"
-											: "",
-									}}
-									className="todo_column todo_done"
-								>
-									<h2 className="todo-text">Done</h2>
-									{todos.map((todo) => {
-										return todo.status == 3 ? (
-											<li>
-												<Todo
-													handleEdit={handleEdit}
-													deleteTodo={handleDelete}
-													todo={todo}
-												/>
-											</li>
-										) : (
-											""
-										);
-									})}
-								</div>
+								<Droppable droppableId="todos_2">
+									{(provided) => (
+										<div
+											{...provided.droppableProps}
+											ref={provided.innerRef}
+											style={{
+												backgroundImage: colourblind
+													? "url('https://st.depositphotos.com/1422675/1686/i/600/depositphotos_16864461-stock-photo-seamless-black-white-diagonal-stripes.jpg')"
+													: "",
+											}}
+											className="todo_column todo_in_progress"
+										>
+											<h2 className={colourblind ? "todo-text" : ""}>
+												In progress
+											</h2>
+											{todos.map((todo, index) => {
+												return todo.status == 2 ? (
+													<Draggable
+														key={todo.id}
+														draggableId={todo.title}
+														index={index}
+													>
+														{(provided) => (
+															<li
+																ref={provided.innerRef}
+																{...provided.draggableProps}
+																{...provided.dragHandleProps}
+															>
+																<Todo
+																	handleEdit={handleEdit}
+																	deleteTodo={handleDelete}
+																	todo={todo}
+																/>
+															</li>
+														)}
+													</Draggable>
+												) : (
+													""
+												);
+											})}
+											{provided.placeholder}
+										</div>
+									)}
+								</Droppable>
 							</li>
 						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>
+								<Droppable droppableId="todos_3">
+									{(provided) => (
+										<div
+											{...provided.droppableProps}
+											ref={provided.innerRef}
+											style={{
+												backgroundImage: colourblind
+													? "url('https://cdn2.vectorstock.com/i/1000x1000/71/36/seamless-black-white-polka-dot-pattern-vector-7737136.jpg')"
+													: "",
+											}}
+											className="todo_column todo_done"
+										>
+											<h2 className={colourblind ? "todo-text" : ""}>Done</h2>
+											{todos.map((todo, index) => {
+												return todo.status == 3 ? (
+													<Draggable
+														key={todo.id}
+														draggableId={todo.title}
+														index={index}
+													>
+														{(provided) => (
+															<li
+																ref={provided.innerRef}
+																{...provided.draggableProps}
+																{...provided.dragHandleProps}
+															>
+																<Todo
+																	handleEdit={handleEdit}
+																	deleteTodo={handleDelete}
+																	todo={todo}
+																/>
+															</li>
+														)}
+													</Draggable>
+												) : (
+													""
+												);
+											})}
+											{provided.placeholder}
+										</div>
+									)}
+								</Droppable>
+							</li>
+						</ul>
+						{/* </DragDropContext> */}
 					</div>
 				</div>
-				{/* <div>
-					<ul>
-						<li>
-							<div className="todo_column todo_in_progress">
-								<h2 className="todo-text" aria-label="In progress">
-									In progress
-								</h2>
-								{currentProject.todos.map((todo) => {
-									return todo.status == 2 ? (
-										<li>
-											<Todo todo={todo} />
-										</li>
-									) : (
-										""
-									);
-								})}
-							</div>
-						</li>
-					</ul>
-				</div> */}
-				{/* <div>
-					<ul>
-						<li>
-							<div className="todo_column todo_done">
-								<h2 className="todo-text" aria-label="Done">
-									Done
-								</h2>
-								{currentProject.todos.map((todo) => {
-									return todo.status == 3 ? (
-										<li>
-											<Todo todo={todo} />
-										</li>
-									) : (
-										""
-									);
-								})}
-							</div>
-						</li>
-					</ul>
-				</div> */}
 			</DragDropContext>
 		</>
 	);

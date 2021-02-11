@@ -4,7 +4,7 @@ import { CredentialsContext } from "../App";
 import M from "materialize-css";
 import Login from "./Login";
 
-function Navbar({ projects, setProjects }) {
+function Navbar({ projects, setProjects, setUserId }) {
 	// const [credentials] = useContext(CredentialsContext);
 	const credentials = localStorage.getItem("currentUser");
 	const history = useHistory();
@@ -17,6 +17,7 @@ function Navbar({ projects, setProjects }) {
 	const handleLogout = () => {
 		console.log("Click");
 		localStorage.removeItem("currentUser");
+		setUserId(null);
 		history.push("/");
 	};
 
@@ -41,21 +42,35 @@ function Navbar({ projects, setProjects }) {
 								USER PROFILE
 							</Link>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
-					<li>{credentials ? <Link to="/dashboard" alt="Dashboard">DASHBOARD</Link> : ""}</li>
+					<li>
+						{credentials ? (
+							<Link to="/dashboard" alt="Dashboard">
+								DASHBOARD
+							</Link>
+						) : (
+							""
+						)}
+					</li>
 					<li className="user">
 						{credentials ? (
 							<a onClick={handleLogout} href="/" alt="Log out">
 								LOG OUT
 							</a>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li className="user">
-						{credentials ? <Link to="/userprofile" aria-label="User Profile">ACCOUNT</Link> : ""}
+						{credentials ? (
+							<Link to="/userprofile" aria-label="User Profile">
+								ACCOUNT
+							</Link>
+						) : (
+							""
+						)}
 					</li>
 					{/* <li className="searchBar">
 						<input type="text" placeholder="Search.."></input>
@@ -81,11 +96,20 @@ function Navbar({ projects, setProjects }) {
 						</div>
 					</li>
 				</ul>
-				{credentials ? "" : <div className="footer">
-					<div className="footer-text">Already have an account with us? <Link to="/login" aria-label="Log into account"><button className="footer-button" id="footerbutton">
-						Log in now </button> </Link>
+				{credentials ? (
+					""
+				) : (
+					<div className="footer">
+						<div className="footer-text">
+							Already have an account with us?{" "}
+							<Link to="/login" aria-label="Log into account">
+								<button className="footer-button" id="footerbutton">
+									Log in now{" "}
+								</button>{" "}
+							</Link>
+						</div>
 					</div>
-				</div>}
+				)}
 			</nav>
 
 			{/* <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
