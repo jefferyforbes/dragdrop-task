@@ -1841,6 +1841,7 @@
   dependencies:
     "@types/node" "*"
 
+<<<<<<< HEAD
 "@types/sinonjs__fake-timers@^6.0.1":
   "integrity" "sha512-dIPoZ3g5gcx9zZEszaxLSVTvMReD3xxyyDnQUjA6IYDG9Ba2AV0otMPs+77sG9ojB4Qr2N2Vk5RnKeuA0X/0bg=="
   "resolved" "https://registry.npmjs.org/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-6.0.2.tgz"
@@ -1851,6 +1852,8 @@
   "resolved" "https://registry.npmjs.org/@types/sizzle/-/sizzle-2.3.2.tgz"
   "version" "2.3.2"
 
+=======
+>>>>>>> main
 "@types/sortablejs@^1.10.0", "@types/sortablejs@^1.10.6":
   "integrity" "sha512-QRz8Z+uw2Y4Gwrtxw8hD782zzuxxugdcq8X/FkPsXUa1kfslhGzy13+4HugO9FXNo+jlWVcE6DYmmegniIQ30A=="
   "resolved" "https://registry.npmjs.org/@types/sortablejs/-/sortablejs-1.10.6.tgz"
@@ -2902,7 +2905,7 @@
   "resolved" "https://registry.npmjs.org/bn.js/-/bn.js-5.1.3.tgz"
   "version" "5.1.3"
 
-"body-parser@1.19.0":
+"body-parser@^1.19.0", "body-parser@1.19.0":
   "integrity" "sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw=="
   "resolved" "https://registry.npmjs.org/body-parser/-/body-parser-1.19.0.tgz"
   "version" "1.19.0"
@@ -10101,6 +10104,16 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
+<<<<<<< HEAD
+=======
+"react-dnd-html5-backend@^11.1.3":
+  "integrity" "sha512-/1FjNlJbW/ivkUxlxQd7o3trA5DE33QiRZgxent3zKme8DwF4Nbw3OFVhTRFGaYhHFNL1rZt6Rdj1D78BjnNLw=="
+  "resolved" "https://registry.npmjs.org/react-dnd-html5-backend/-/react-dnd-html5-backend-11.1.3.tgz"
+  "version" "11.1.3"
+  dependencies:
+    "dnd-core" "^11.1.3"
+
+>>>>>>> main
 "react-dnd@^11.1.3":
   "integrity" "sha512-8rtzzT8iwHgdSC89VktwhqdKKtfXaAyC4wiqp0SywpHG12TTLvfOoL6xNEIUWXwIEWu+CFfDn4GZJyynCEuHIQ=="
   "resolved" "https://registry.npmjs.org/react-dnd/-/react-dnd-11.1.3.tgz"
@@ -10111,7 +10124,11 @@
     "dnd-core" "^11.1.3"
     "hoist-non-react-statics" "^3.3.0"
 
+<<<<<<< HEAD
 "react-dom@*", "react-dom@^16.8.5", "react-dom@^16.9.0", "react-dom@^17.0.1", "react-dom@>= 16.9.0":
+=======
+"react-dom@^16.8.5", "react-dom@^16.9.0", "react-dom@^17.0.1", "react-dom@>= 16.9.0":
+>>>>>>> main
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -10166,7 +10183,11 @@
     "prop-types" "^15.7.2"
     "react-is" "^16.13.1"
 
+<<<<<<< HEAD
 "react-refresh@^0.8.3", "react-refresh@>=0.8.3 <0.10.0":
+=======
+"react-refresh@^0.8.3":
+>>>>>>> main
   "integrity" "sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg=="
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
@@ -10275,7 +10296,11 @@
     "classnames" "^2.2.6"
     "tiny-invariant" "^1.1.0"
 
+<<<<<<< HEAD
 "react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.8.5", "react@^16.9.0", "react@^17.0.1", "react@>= 16", "react@>= 16.9.0", "react@>=15", "react@17.0.1":
+=======
+"react@*", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^16.8.5", "react@^16.9.0", "react@^17.0.1", "react@>= 16.9.0":
+>>>>>>> main
   "integrity" "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.1.tgz"
   "version" "17.0.1"
@@ -11743,7 +11768,11 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
+<<<<<<< HEAD
 "symbol-observable@^1.1.0", "symbol-observable@^1.2.0":
+=======
+"symbol-observable@^1.2.0":
+>>>>>>> main
   "integrity" "sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ=="
   "resolved" "https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.2.0.tgz"
   "version" "1.2.0"

@@ -199,11 +199,12 @@ app.put("/todo/:id", async (req, res) => {
 	res.json({ message: "Todo updated succesfully" });
 });
 
+
 // Edit Profile
-app.post("/editProfile", async(req, res) => {
-	const {currentUser, newUserName} = req.body;
-	let updateUser = user.findOne()
-})
+// app.post("/editProfile", async(req, res) => {
+// 	const {currentUser, newUserName} = req.body;
+// 	let updateUser = user.findOne()
+// })
 
 app.listen(port, () => {
 	console.log(`Server listening on port http://localhost:${port}`);
