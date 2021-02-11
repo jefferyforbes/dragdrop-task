@@ -59,6 +59,8 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@types/sortablejs": "^1.10.6"
+		"@types/sortablejs": "^1.10.6",
+		"cypress": "^6.4.0",
+		"express-validator": "^6.9.2"
 	}
 }
