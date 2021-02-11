@@ -187,7 +187,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 										<div
 											style={{
 												backgroundImage: colourblind
-													? "url('https://media.gowallpaper.co.uk/media/catalog/product/h/o/holden_decor_chevron_striped_pattern_black_white_wallpaper_-_12574.jpg')"
+													? "url('https://i.pinimg.com/originals/80/2b/95/802b954e60cfbb08c9ff5af28feef6a8.png')"
 													: "",
 											}}
 											className="todo_column todo_current"
@@ -264,7 +264,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 													/>
 												) : (
 													<VscAdd
-														className="icon"
+														className="add_icon icon"
 														onClick={() => setAdd(true)}
 														style={{
 															fontSize: "2rem",
@@ -287,7 +287,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 								<div
 									style={{
 										backgroundImage: colourblind
-											? "url('https://images.freecreatives.com/wp-content/uploads/2017/01/Monochrome-Hexagon-Pattern.jpg')"
+											? "url('https://st.depositphotos.com/1422675/1686/i/600/depositphotos_16864461-stock-photo-seamless-black-white-diagonal-stripes.jpg')"
 											: "",
 									}}
 									className="todo_column todo_in_progress"

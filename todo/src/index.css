@@ -210,7 +210,7 @@ a {
 
 .todo_column {
 	padding: 10px;
-	width: 420px;
+	width: 380px;
 	min-height: 100px;
 }
 
@@ -238,11 +238,11 @@ a {
 
 .progress_bar {
 	margin-top: 40px;
-	color: white;
+	color:rgba(0, 0, 0, 0.5);
 }
 
 .project_title {
-	color: white;
+	color:rgba(0, 0, 0, 0.5);
 }
 
 .project_wrapper {
@@ -258,9 +258,9 @@ a {
 	position: relative;
 	text-decoration: none;
 	/* color: #000; */
-	color: white;
+	/* color: white; */
 	/* background: #ffc; */
-	background: black;
+	background: rgb(248, 236, 167);
 	display: block;
 	height: 15em;
 	width: 15em;
@@ -292,7 +292,7 @@ a {
 	position: relative;
 	top: -5px;
 	/* background: #ccf; */
-	background: white;
+	background: rgb(171, 179, 255);
 }
 .project_wrapper li:nth-child(5n) .project_link {
 	transform: rotate(5deg);
@@ -313,7 +313,7 @@ a {
 }
 
 .todo-text {
-	/* background-color: white; */
+	background-color: white;
 	color: black;
 	text-indent: top;
 	padding: 10px;
@@ -448,6 +448,15 @@ a {
 
 .icon {
 	transition: all 250ms ease-in-out;
+}
+
+.add_icon {
+	transition: all 250ms ease-in-out;
+	background-color: white;
+	border-radius: 15%;
+	background: white;
+	border-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid;
 }
 
 .icon:hover {
