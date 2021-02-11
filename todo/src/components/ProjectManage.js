@@ -31,7 +31,7 @@ function Project() {
 				<p>Due Date: {projectDueDate}</p>
 			</div>
 		);
-		// ReactDom.render(newProject, document.getElementById("testProjectArea"));
+
 		setProjectCreated(today);
 
 		fetch("http://localhost:4000/createProject", {
@@ -46,8 +46,6 @@ function Project() {
 			}),
 		});
 	};
-
-    // Media Query required at and below 600-610px
 
     const buttonStyle = {
 		display: "inline-block",
@@ -67,19 +65,20 @@ function Project() {
 		marginTop: "20px",
 	};
 
-    const projectTitleContainer = {
-        marginTop: "5rem",
-        fontSize: "1.8rem",
-        style: "poppins",
-        display: "flex",
-        padding: "4rem",
-        flexFlow: "column",
-        minHeight: "10rem",
-        minWidth: "10rem",
-        maxWidth: "20rem",
-        backgroundColor: "cyan",
+	const projectTitleContainer = {
+		marginTop: "5rem",
+		fontSize: "1.8rem",
+		style: "poppins",
+		display: "flex",
+		padding: "4rem",
+		flexFlow: "column",
+		minHeight: "10rem",
+		minWidth: "10rem",
+		maxWidth: "20rem",
+		backgroundColor: "cyan",
 		justifyContent: "center",
 		border: "4px solid black",
+    
         borderRadius: "12px",
     }
 
@@ -135,4 +134,5 @@ return ( <div>
 </div>
 
 )}
+
 export default Project;

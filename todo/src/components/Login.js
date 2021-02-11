@@ -35,8 +35,9 @@ export default function Login({ addProject }) {
 			.then(async (res) => {
 				// console.log(res);
 				const avatar = res.userAvatar;
+				// addProject(res.projects, res.userId);
 				setCredentials({ username, password, avatar });
-				localStorage.setItem("currentUser", username);
+				localStorage.setItem("currentUser", res.userId);
 				history.push("/dashboard");
 				window.location.reload();
 				// return res;
@@ -44,7 +45,6 @@ export default function Login({ addProject }) {
 			.catch((err) => {
 				setError(err.message);
 			});
-		// addProject(data.projects);
 	};
 
 	const buttonStyle = {
@@ -77,23 +77,23 @@ export default function Login({ addProject }) {
 
 						className="login_input"
 						onChange={(e) => setUsername(e.target.value)}
-						placeholder="username"
+						placeholder="username" aria-label="Username"
 					></input>
 					<br />
 					<input
 						className="login_input"
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}
-						placeholder="password"
+						placeholder="password" aria-label="Password"
 					></input>
 					<br />
-					<button className="login_button" style={buttonStyle} type="submit">
+					<button className="login_button" style={buttonStyle} type="submit" aria-label="Submit">
 						Login
 					</button>
 				</form>
 				<h3 className="register_prompt">
 					Don't have an account yet?{" "}
-					<Link className="register_now" to="/register">
+					<Link className="register_now" to="/register" aria-label="Register account">
 						Register now
 					</Link>
 				</h3>

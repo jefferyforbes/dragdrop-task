@@ -1,7 +1,7 @@
 import React from "react";
 
 function ProjectCard({ project }) {
-	const { title, createdAt, dueAt } = project;
+    const { title, createdAt, dueAt } = project;
 
 	const percentageTimeLeft =
 		((new Date().getTime() - createdAt) / (dueAt - createdAt)) * 100;
