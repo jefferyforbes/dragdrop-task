@@ -292,7 +292,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 									}}
 									className="todo_column todo_in_progress"
 								>
-									<h2>In progress</h2>
+									<h2 className="todo-text">In progress</h2>
 									{todos.map((todo) => {
 										return todo.status == 2 ? (
 											<li>
@@ -321,7 +321,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 									}}
 									className="todo_column todo_done"
 								>
-									<h2>Done</h2>
+									<h2 className="todo-text">Done</h2>
 									{todos.map((todo) => {
 										return todo.status == 3 ? (
 											<li>
@@ -340,7 +340,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 						</ul>
 					</div>
 				</div>
-				<div>
+				{/* <div>
 					<ul>
 						<li>
 							<div className="todo_column todo_in_progress">
@@ -359,8 +359,8 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 							</div>
 						</li>
 					</ul>
-				</div>
-				<div>
+				</div> */}
+				{/* <div>
 					<ul>
 						<li>
 							<div className="todo_column todo_done">
@@ -379,7 +379,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 							</div>
 						</li>
 					</ul>
-				</div>
+				</div> */}
 			</DragDropContext>
 		</>
 	);
