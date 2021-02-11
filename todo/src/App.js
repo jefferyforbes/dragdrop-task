@@ -26,163 +26,49 @@ function App() {
 	var targetDate = new Date();
 	targetDate.setDate(targetDate.getDate() + 10);
 
-	const [projects, setProjects] = useState([
-		{
-			id: 1,
-			title: "Project 1",
-			createdAt: Date.now(),
-			dueAt: Date.now() + 300,
-			user_id: 1,
-			todos: [
-				{
-					id: 1,
-					name: "Eat bed",
-					body: "Make bed",
-					status: 1,
-					todo_id: 1,
-				},
-				{
-					id: 2,
-					name: "Crrack vkas bed",
-					body: "Eat a psa",
-					status: 2,
-					todo_id: 1,
-				},
-				{
-					id: 3,
-					name: "Erema alsa",
-					body: "creme fraiche",
-					status: 1,
-					todo_id: 1,
-				},
-				{
-					id: 2,
-					name: "Crrack vkas bed",
-					body: "Eat a psa",
-					status: 3,
-					todo_id: 1,
-				},
-				{
-					id: 3,
-					name: "Erema alsa",
-					body: "creme fraiche",
-					status: 3,
-					todo_id: 1,
-				},
-			],
-		},
-		{
-			id: 2,
-			title: "Project 2",
-			user_id: 1,
-			todos: [
-				{
-					id: 1,
-					name: "boss baby bed",
-					body: "buy the bed",
-					status: 1,
-					todo_id: 2,
-				},
-				{
-					id: 2,
-					name: "bosow real",
-					body: "les a psa",
-					status: 2,
-					todo_id: 2,
-				},
-				{
-					id: 3,
-					name: "lopa bopa",
-					body: "cka fraiche",
-					status: 1,
-					todo_id: 2,
-				},
-			],
-		},
-		{
-			id: 3,
-			title: "Project 3",
-			user_id: 1,
-			todos: [
-				{
-					id: 1,
-					name: "Eat bed",
-					body: "Make bed",
-					status: 1,
-					todo_id: 3,
-				},
-				{
-					id: 2,
-					name: "Crrack vkas bed",
-					body: "Eat a psa",
-					status: 2,
-					todo_id: 3,
-				},
-				{
-					id: 3,
-					name: "Erema alsa",
-					body: "creme fraiche",
-					status: 1,
-					todo_id: 3,
-				},
-				{
-					id: 2,
-					name: "Crrack vkas bed",
-					body: "Eat a psa",
-					status: 3,
-					todo_id: 3,
-				},
-				{
-					id: 3,
-					name: "Erema alsa",
-					body: "creme fraiche",
-					status: 3,
-					todo_id: 3,
-				},
-			],
-		},
-		{
-			id: 4,
-			title: "Project 4",
-			user_id: 1,
-			todos: [
-				{
-					id: 1,
-					name: "boss baby bed",
-					body: "buy the bed",
-					status: 1,
-					todo_id: 4,
-				},
-				{
-					id: 2,
-					name: "bosow real",
-					body: "les a psa",
-					status: 2,
-					todo_id: 4,
-				},
-				{
-					id: 3,
-					name: "lopa bopa",
-					body: "cka fraiche",
-					status: 1,
-					todo_id: 4,
-				},
-			],
-		},
-	]);
+	const [userId, setUserId] = useState();
+	const [projects, setProjects] = useState([]);
 	// const projectsState = useState(null);
 
 	useEffect(() => {
-		const fetchProjects = async () => {
-			const res = await fetch("http://localhost:4000/");
-		};
-	});
+		console.log(localStorage.getItem("currentUser"));
+		setUserId(localStorage.getItem("currentUser"));
 
-	const addToState = (projects) => {
+		if (localStorage.getItem) {
+			console.log("great success");
+		}
+		// const fetchProjects = async () => {
+		// 	const res = await fetch("http://localhost:4000/projects", {
+		// 		method: "POST",
+		// 		headers: {
+		// 			"Content-Type": "application/json",
+		// 		},
+		// 		body: JSON.stringify({
+		// 			userId,
+		// 		}),
+		// 	});
+		// 	console.log(res);
+		// 	return res;
+		// };
+		// fetchProjects();
+		// setProjects(res.projects);
+	}, []);
+
+	const addToState = (projects, id) => {
 		setProjects(projects);
+		setUserId(id);
 		// projects.map((project) => {
 		// 	console.log(project);
 		// });
+	};
+
+	const deleteTodo = async (id) => {
+		// await fetch(`http://localhost:4000/todo/${id}`, {
+		// 	method: "DELETE",
+		// });
+		// const reducedTodo = [...projects];
+		// console.log(reducedTodo);
+		console.log(id);
 	};
 
 	const addTodo = (todo) => {};
@@ -195,7 +81,7 @@ function App() {
 			>
 				<Router>
 					<Route path="/">
-						<Navbar />
+						<Navbar projects={projects} setProjects={setProjects} />
 					</Route>
 					<Switch>
 						<Route exact path="/">
@@ -208,7 +94,7 @@ function App() {
 							<Login addProject={addToState} />
 						</Route>
 						<Route exact path="/dashboard">
-							<Dashboard projects={projects} />
+							<Dashboard projects={projects} setProjects={setProjects} />
 						</Route>
 						<Route exact path="/userprofile">
 							<Userprofile />
@@ -217,7 +103,11 @@ function App() {
 							<ProjectPage />
 						</Route> */}
 						<Route exact path="/project/:id">
-							<ProjectPage setProjects={setProjects} projects={projects} />
+							<ProjectPage
+								setProjects={setProjects}
+								projects={projects}
+								deleteTodo={deleteTodo}
+							/>
 						</Route>
 						<Route exact path="/projectoverview">
 							{/* <Project /> */}

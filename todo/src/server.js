@@ -70,6 +70,7 @@ app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
 		},
 	});
 	const userAvatar = user.avatar;
+	const userId = user.id;
 
 	// if (!user || user.password !== bcrypt.hashSync(password, salt)) {
 	if (!user || user.password !== password) {
@@ -87,30 +88,41 @@ app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
 		});
 		console.log("Loggin in");
 		res.status(200);
-		res.json({ username, userAvatar, projects });
+		res.json({ username, userId, userAvatar, projects });
 	}
 	// res.json(user);
 });
 
 // Create New Project HTTP Request
 app.post("/createProject", async (req, res) => {
-	const { projectTitle, projectCreated, projectDueDate } = req.body;
-	if (projectCheck) {
-		const newProject = await Project.create({
-			title: projectTitle,
-			createdAt: projectCreated,
-			dueAt: projectDueDate,
-		});
-		res.json(newProject).status(200);
-	} else {
-		res.json(newProject).status(200);
-		alert(`${newProject} already exists`);
-		console.log(`${newProject} already exists`);
-	}
+	const { projectTitle, projectCreated, projectDueDate, userId } = req.body;
+	// if (projectCheck) {
+	console.log(projectTitle, userId);
+	const newProject = await Project.create({
+		title: projectTitle,
+		createdAt: projectCreated,
+		dueAt: projectDueDate,
+		user_id: userId,
+	});
+	res.json(newProject).status(200);
+	// } else {
+	// console.log(`${newProject} already exists`);
+	// }
 });
 
 // Request All Projects
-app.get("/projects", async (req, res) => {
+app.post("/projects", async (req, res) => {
+	console.log(req.body);
+	const id = req.body.userId;
+	const user = await User.findByPk(id);
+	const projects = await user.getProjects({
+		include: [
+			{
+				model: Todo,
+				as: "todos",
+			},
+		],
+	});
 	// const projects = await Project.findAll({
 	// 	include: [
 	// 		{
@@ -125,7 +137,7 @@ app.get("/projects", async (req, res) => {
 	// } catch (Error) {
 	// 	console.log(Error);
 	// }
-	res.json({ msg: "hello" });
+	res.json({ projects });
 });
 
 app.get("/project/:id", async (req, res) => {
@@ -144,19 +156,31 @@ app.get("/project/:id", async (req, res) => {
 	res.json(project);
 });
 
+app.post("/todos", async (req, res) => {
+	const { title, body, projectId } = req.body;
+	console.log(req.body);
+	const todo = await Todo.create({
+		title,
+		body,
+		status: 1,
+		todo_id: projectId,
+	});
+	// const id = req.body.userId;
+	// const user = await User.findByPk(id);
+	// const projects = await user.getProjects({
+	// 	include: [
+	// 		{
+	// 			model: Todo,
+	// 			as: "todos",
+	// 		},
+	// 	],
+	// });
+	res.json({ todo });
+});
+
 /**
  * Delete a project from DB
  */
-app.delete("/project/:id", async (req, res) => {
-	await Project.destroy({
-		where: {
-			id: req.params.id,
-		},
-	});
-	res.status(200);
-	res.json({ message: "Deleted succesfully" });
-});
-
 app.delete("/project/:id", async (req, res) => {
 	await Project.destroy({
 		where: {
@@ -187,16 +211,26 @@ app.delete("/todo/:id", async (req, res) => {
 	res.json({ message: "Todo deleted succesfully" });
 });
 
-app.put("/todo/:id", async (req, res) => {
-	const { title, body, status } = req.body;
-	let todo = await Todo.findByPk(req.params.id);
+// app.delete("/todo/:id", async (req, res) => {
+// 	await Todo.destroy({
+// 		where: {
+// 			id: req.params.id,
+// 		},
+// 	});
+// 	res.status(200);
+// 	res.json({ message: "Todo deleted succesfully" });
+// });
+
+app.put("/todos", async (req, res) => {
+	const { id, title, body, status } = req.body;
+	let todo = await Todo.findByPk(id);
 	todo.title = title;
 	todo.body = body;
 	todo.status = status;
 	todo.save();
 	// await Project.update({ title }, { where: req.params.id });
 	console.log(todo);
-	res.json({ message: "Todo updated succesfully" });
+	res.json({ todo });
 });
 
 app.listen(port, () => {

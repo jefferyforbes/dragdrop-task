@@ -35,8 +35,9 @@ export default function Login({ addProject }) {
 			.then(async (res) => {
 				// console.log(res);
 				const avatar = res.userAvatar;
+				// addProject(res.projects, res.userId);
 				setCredentials({ username, password, avatar });
-				localStorage.setItem("currentUser", username);
+				localStorage.setItem("currentUser", res.userId);
 				history.push("/dashboard");
 				window.location.reload();
 				// return res;
@@ -44,7 +45,6 @@ export default function Login({ addProject }) {
 			.catch((err) => {
 				setError(err.message);
 			});
-		// addProject(data.projects);
 	};
 
 	const buttonStyle = {

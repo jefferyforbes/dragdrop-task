@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { CredentialsContext } from "../App";
 import M from "materialize-css";
 import Login from "./Login";
 
-function Navbar() {
+function Navbar({ projects, setProjects }) {
 	// const [credentials] = useContext(CredentialsContext);
 	const credentials = localStorage.getItem("currentUser");
 	const history = useHistory();
+	const [search, setSearch] = useState("");
 
 	useEffect(() => {
 		M.AutoInit();
@@ -17,6 +18,16 @@ function Navbar() {
 		console.log("Click");
 		localStorage.removeItem("currentUser");
 		history.push("/");
+	};
+
+	const handleOnChange = (e) => {
+		setSearch(e.target.value);
+		// const regexStr = '(?=.*' + searchString.split(/\,|\s/).join(')(?=.*') + ')';
+		const searchProjects = [...projects];
+		const reducedProjects = searchProjects.filter((project) => {
+			return project.includes(search);
+		});
+		console.log(reducedProjects);
 	};
 
 	return (
@@ -30,25 +41,25 @@ function Navbar() {
 								USER PROFILE
 							</Link>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li>{credentials ? <Link to="/dashboard" alt="Dashboard">DASHBOARD</Link> : ""}</li>
 					<li>
 						{credentials ? (
 							<Link to="/projectoverview" alt="Project overview"> PROJECT OVERVIEW</Link>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li className="user">
 						{credentials ? (
 							<a onClick={handleLogout} href="/" alt="Log out">
-								LOG OUT 
+								LOG OUT
 							</a>
 						) : (
-								""
-							)}
+							""
+						)}
 					</li>
 					<li className="user">
 						{credentials ? <Link to="/userprofile" aria-label="User Profile">ACCOUNT</Link> : ""}
@@ -59,7 +70,15 @@ function Navbar() {
 					<li className="searchBar">
 						<div class="growing-search">
 							<div class="input">
-								<input type="text" placeholder="Search..." name="search" aria-label="Search Bar" color="black"/>
+								<input
+									onChange={handleOnChange}
+									value={search}
+									type="text"
+									placeholder="Search..."
+									name="search"
+                  aria-label="Search Bar"
+                  color="black"
+								/>
 							</div>
 							<div class="submit">
 								<button type="submit" name="go_search" aria-label="Submit">
@@ -75,7 +94,6 @@ function Navbar() {
 				</div>
 			</div>}
 			</nav>
-
 
 			{/* <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
 				Modal
