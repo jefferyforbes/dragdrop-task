@@ -1,7 +1,8 @@
-
-		{
+	{
 			id: 1,
 			title: "Project 1",
+			createdAt: Date.now(),
+			dueAt: Date.now() + 300,
 			user_id: 1,
 			todos: [
 				{
@@ -23,6 +24,20 @@
 					name: "Erema alsa",
 					body: "creme fraiche",
 					status: 1,
+					todo_id: 1,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 3,
+					todo_id: 1,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 3,
 					todo_id: 1,
 				},
 			],
@@ -55,4 +70,73 @@
 				},
 			],
 		},
-	
+		{
+			id: 3,
+			title: "Project 3",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "Eat bed",
+					body: "Make bed",
+					status: 1,
+					todo_id: 3,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 2,
+					todo_id: 3,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 1,
+					todo_id: 3,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 3,
+					todo_id: 3,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 3,
+					todo_id: 3,
+				},
+			],
+		},
+		{
+			id: 4,
+			title: "Project 4",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "boss baby bed",
+					body: "buy the bed",
+					status: 1,
+					todo_id: 4,
+				},
+				{
+					id: 2,
+					name: "bosow real",
+					body: "les a psa",
+					status: 2,
+					todo_id: 4,
+				},
+				{
+					id: 3,
+					name: "lopa bopa",
+					body: "cka fraiche",
+					status: 1,
+					todo_id: 4,
+				},
+			],
+		},

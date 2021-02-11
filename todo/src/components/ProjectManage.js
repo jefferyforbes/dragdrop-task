@@ -2,54 +2,16 @@ import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 
 function Project() {
-
-    const url = "http://localhost:4000";
     const today = new Date();
     const [projectTitle, setProjectTitle] = useState("Project Title");
     const [projectCreated, setProjectCreated] = useState();
     const [projectDueDate, setDueDate] = useState();
     const [projectList, setProjectList] = useState(null)
-    // const hostLocation = window.location.origin
-    // console.log(hostLocation)
-
-// -------- Request All Projects --------
-// setTimeout(() => {
-//     fetch("http://localhost:4000/getProjects")
-// .then (res => {
-//     if (res.ok) {
-//         console.log("Success, got all projects")
-//         setProjectList(res.data)
-//     } else {
-//         console.log("Not Successful")
-//     }
-// })
-// console.log(projectList)
-// }, 555000);
-
-useEffect(() => {
-}, [projectList])
-
-// setTimeout(() => {
-//     fetch("https://6020f3fb46f1e4001780392c.mockapi.io/getApi/users")
-// .then (res => {
-//     if (res.ok) {
-//         console.log("Success, got all projects")
-//         setProjectList(res.data)
-//     } else {
-//         console.log("Not Successful")
-//     }
-// })
-// console.log(projectList)
-// }, 3000);
 
  // ------- Create New Project --------
     const useHandleInput = (event) => {
-
     event.preventDefault()
-
     console.log(`Title: ${projectTitle}, Created: ${projectCreated}, Due: ${projectDueDate}`)
-
-
 		const newProject = (
 			<div
 				style={{
@@ -69,11 +31,7 @@ useEffect(() => {
 				<p>Due Date: {projectDueDate}</p>
 			</div>
 		);
-
-		ReactDom.render(newProject, document.getElementById("testProjectArea"));
-
-
-
+		// ReactDom.render(newProject, document.getElementById("testProjectArea"));
 		setProjectCreated(today);
 
 		fetch("http://localhost:4000/createProject", {
@@ -88,7 +46,6 @@ useEffect(() => {
 			}),
 		});
 	};
-
 
     // Media Query required at and below 600-610px
 
@@ -140,7 +97,6 @@ useEffect(() => {
     }
 
 return ( <div>
-
     <div style={{
         display: "flex",
         justifyContent: "center",

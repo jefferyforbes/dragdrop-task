@@ -19,17 +19,164 @@ import ProjectPage from "./components/ProjectPage";
 export const CredentialsContext = React.createContext(null);
 // export const ProjectsContext = React.createContext(null);
 
-
 function App() {
 	const credentialsState = useState(null);
-	const [projects, setProjects] = useState([]);
+	// const [projects, setProjects] = useState([]);
+
+	var targetDate = new Date();
+	targetDate.setDate(targetDate.getDate() + 10);
+
+	const [projects, setProjects] = useState([
+		{
+			id: 1,
+			title: "Project 1",
+			createdAt: Date.now(),
+			dueAt: Date.now() + 300,
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "Eat bed",
+					body: "Make bed",
+					status: 1,
+					todo_id: 1,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 2,
+					todo_id: 1,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 1,
+					todo_id: 1,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 3,
+					todo_id: 1,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 3,
+					todo_id: 1,
+				},
+			],
+		},
+		{
+			id: 2,
+			title: "Project 2",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "boss baby bed",
+					body: "buy the bed",
+					status: 1,
+					todo_id: 2,
+				},
+				{
+					id: 2,
+					name: "bosow real",
+					body: "les a psa",
+					status: 2,
+					todo_id: 2,
+				},
+				{
+					id: 3,
+					name: "lopa bopa",
+					body: "cka fraiche",
+					status: 1,
+					todo_id: 2,
+				},
+			],
+		},
+		{
+			id: 3,
+			title: "Project 3",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "Eat bed",
+					body: "Make bed",
+					status: 1,
+					todo_id: 3,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 2,
+					todo_id: 3,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 1,
+					todo_id: 3,
+				},
+				{
+					id: 2,
+					name: "Crrack vkas bed",
+					body: "Eat a psa",
+					status: 3,
+					todo_id: 3,
+				},
+				{
+					id: 3,
+					name: "Erema alsa",
+					body: "creme fraiche",
+					status: 3,
+					todo_id: 3,
+				},
+			],
+		},
+		{
+			id: 4,
+			title: "Project 4",
+			user_id: 1,
+			todos: [
+				{
+					id: 1,
+					name: "boss baby bed",
+					body: "buy the bed",
+					status: 1,
+					todo_id: 4,
+				},
+				{
+					id: 2,
+					name: "bosow real",
+					body: "les a psa",
+					status: 2,
+					todo_id: 4,
+				},
+				{
+					id: 3,
+					name: "lopa bopa",
+					body: "cka fraiche",
+					status: 1,
+					todo_id: 4,
+				},
+			],
+		},
+	]);
 	// const projectsState = useState(null);
 
-	// useEffect(() => {
-	// 	const fetchProjects = async () => {
-	// 		const res = await fetch('http://localhost:4000/')
-	// 	}
-	// })
+	useEffect(() => {
+		const fetchProjects = async () => {
+			const res = await fetch("http://localhost:4000/");
+		};
+	});
 
 	const addToState = (projects) => {
 		setProjects(projects);
@@ -37,6 +184,8 @@ function App() {
 		// 	console.log(project);
 		// });
 	};
+
+	const addTodo = (todo) => {};
 
 	return (
 		<div className="App">
@@ -68,7 +217,7 @@ function App() {
 							<ProjectPage />
 						</Route> */}
 						<Route exact path="/project/:id">
-							<Project projects={projects} />
+							<ProjectPage setProjects={setProjects} projects={projects} />
 						</Route>
 						<Route exact path="/projectoverview">
 							{/* <Project /> */}
@@ -82,5 +231,4 @@ function App() {
 		</div>
 	);
 }
-
 export default App;

@@ -36,7 +36,7 @@ module.exports = { User };
 	await sequelize.sync({ force: true }); // recreate db
 	const r = await User.create({
 		username: "testUser",
-		password: "aaaaa",
+		password: "aaaaaa",
 		avatar: "www.test.com",
 	});
 	console.log("Inserted user:" + r.username);
