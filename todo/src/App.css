@@ -42,6 +42,7 @@ ul {
   	border: none;
   	margin-top: 8px;
 	margin-right: 16px;
+	color: black;
 	
 }
 /* Aligning user button to the right  */
@@ -69,8 +70,8 @@ body {
 
 .welcome {
 	padding: 3px;
-	height: 70px;
-	width: 600px;
+	height: 70%;
+	width: 120%;
 	font-size: 50px;
 	background: black;
 	margin: 10px;
@@ -82,8 +83,8 @@ body {
 
 .newUser { 
 	padding: 3px;
-	height: 45px; 
-	width: 425px;
+	height: 40%; 
+	width: 80%;
 	font-size: 25px;
 	background: black;
 	margin: 10px;
@@ -94,7 +95,7 @@ body {
 }
 
 /* draft styling for dashboard */
-.activeProjects {
+/* .activeProjects {
 	padding: 3px;
 	height: 30px;
 	width: 450px;
@@ -107,8 +108,8 @@ body {
     left: 50%;
     margin-right: -50%;
 	transform: translate(-50%, -50%);
-	justify-content: space-around;
-}
+	justify-content: space-around; */
+
 
 .userContainer {
 	font-weight: bold;
@@ -221,7 +222,7 @@ body {
 }
 
 /* styling of the actual modal container box */
-.modal-background {
+/* .modal-background {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0,0,0,0.7);
@@ -229,13 +230,13 @@ body {
 	top: 0;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 	
-}
+
 
 /* styling of the modal contents */
-.modal-box {
-	width: 500px;
+/* .modal-box { */
+	/* width: 500px;
 	height: 300px;
 	background: white;
 	border-radius: 4px;
@@ -243,18 +244,18 @@ body {
 	padding: 20px;
 	position: absolute; 
 	position: relative;
-	display: none;
-}
+	display: none; */
+
 
 /* positioning and editing of the logo */
-.modalimage {
+/* .modalimage {
 	width: 100px;
 	height: 100px;
-}
+} */
 
 /* styling of the submit button*/
-.modal-button {
-	background-color: black;
+/* .modal-button { */
+	/* background-color: black;
 	border: 2px solid white;
 	border-radius: 30px;
 	text-decoration: none;
@@ -263,34 +264,34 @@ body {
 	margin-top: 10px;
 	display: inline-block;
 	cursor: pointer;
-}
+} */
 
 /* editing hover function for submit buttom */
-.modal-button:hover {
+/* .modal-button:hover {
 		background-color: black;
 		color: pink;
 		border: 2px solid white;
 		cursor: pointer;
-}
+} */
 
 /* organising input boxes of modal box */
-.modal-input {
+/* .modal-input {
 	width: 50%;
 	display: block;
 	margin: 15px auto;
-	cursor: text;
+	cursor: text; */
 
-}
+
 
 /* closing of the modal box */
-.close {
+/* .close {
 	position: absolute;
 	top: 0;
 	right: 14px;
 	font-size: 40px;
 	transform: rotate(45deg);
 	cursor: pointer;
-}
+} */
 
 .footer {
 	list-style-type: none;
@@ -354,3 +355,46 @@ body {
 	margin-top: "20px";
 }
 
+/* @media screen and (min-width: 40em) {
+    /* css overrides for mid-sized screens goes here 
+      section {
+          margin: 1rem;
+          display: grid;
+          grid-template-columns: auto auto;
+          grid-template-rows: none;
+          gap: 1rem;
+      }
+	  .container {
+		color: white;
+		width: auto;
+		height: auto;
+      }
+	  .newUser { 
+		width: auto;
+		height: auto;
+
+}
+  }
+
+  @media screen and (min-width: 60em) {
+    /* css overrides for large screens goes here 
+    section {
+        grid-template-columns: auto auto auto;
+    }
+	.container {
+		color: white;
+		width: auto;
+		height: auto;
+      }
+
+	.welcome {
+			color: white;
+			width: auto;
+			height: auto;
+		  }
+	
+	.newUser { 
+		width: auto;
+		height: auto;
+
+} */

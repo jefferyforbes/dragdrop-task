@@ -26,24 +26,24 @@ function Navbar() {
 					<li>{credentials ? "" : <Link to="/">HOME</Link>}</li>
 					<li>
 						{credentials ? (
-							<Link to="/userprofile" alt="home">
+							<Link to="/userprofile" alt="User profile">
 								USER PROFILE
 							</Link>
 						) : (
 								""
 							)}
 					</li>
-					<li>{credentials ? <Link to="/dashboard">DASHBOARD</Link> : ""}</li>
+					<li>{credentials ? <Link to="/dashboard" alt="Dashboard">DASHBOARD</Link> : ""}</li>
 					<li>
 						{credentials ? (
-							<Link to="/projectoverview"> PROJECT OVERVIEW</Link>
+							<Link to="/projectoverview" alt="Project overview"> PROJECT OVERVIEW</Link>
 						) : (
 								""
 							)}
 					</li>
 					<li className="user">
 						{credentials ? (
-							<a onClick={handleLogout} href="/">
+							<a onClick={handleLogout} href="/" alt="Log out">
 								LOG OUT 
 							</a>
 						) : (
@@ -51,7 +51,7 @@ function Navbar() {
 							)}
 					</li>
 					<li className="user">
-						{credentials ? <Link to="/userprofile">ACCOUNT</Link> : ""}
+						{credentials ? <Link to="/userprofile" aria-label="User Profile">ACCOUNT</Link> : ""}
 					</li>
 					{/* <li className="searchBar">
 						<input type="text" placeholder="Search.."></input>
@@ -59,10 +59,10 @@ function Navbar() {
 					<li className="searchBar">
 						<div class="growing-search">
 							<div class="input">
-								<input type="text" placeholder="Search..." name="search" />
+								<input type="text" placeholder="Search..." name="search" aria-label="Search Bar" color="black"/>
 							</div>
 							<div class="submit">
-								<button type="submit" name="go_search">
+								<button type="submit" name="go_search" aria-label="Submit">
 									<span class="fa fa-search"></span>
 								</button>
 							</div>
@@ -70,7 +70,7 @@ function Navbar() {
 					</li>
 				</ul>
 				{credentials ? "" : <div className="footer">
-				<div className="footer-text">Already have an account with us? <Link to="/login"><button className="footer-button" id="footerbutton">
+				<div className="footer-text">Already have an account with us? <Link to="/login" aria-label="Log into account"><button className="footer-button" id="footerbutton">
 					Log in now </button> </Link>
 				</div>
 			</div>}

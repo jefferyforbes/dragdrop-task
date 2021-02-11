@@ -59,6 +59,7 @@ a {
 .growing-search div {
 	display: inline-block;
 	font-size: 12px;
+	color: black;
 }
 
 .growing-search .input input {
@@ -70,8 +71,8 @@ a {
 	padding-left: 5px;
 	padding-bottom: 5px;
 	width: 55px;
-	color: #aaa;
-	border-bottom: 1px solid #eee;
+	color:black;
+	border-bottom: 1px solid black;
 }
 
 .growing-search .input input:focus {
@@ -177,6 +178,7 @@ a {
 
 .todo_current {
 	/* border: 1px solid green; */
+	background-image: url(https://st.depositphotos.com/1422675/1686/i/600/depositphotos_16864461-stock-photo-seamless-black-white-diagonal-stripes.jpg);
 	background-color: rgba(240, 63, 63, 0.87);
 	display: flex;
 	flex-direction: column;
@@ -186,6 +188,7 @@ a {
 	background-color: rgba(255, 165, 20, 0.856);
 	display: flex;
 	flex-direction: column;
+	background-image: url(https://s3.envato.com/files/61686245/Abstract%20Seamless%20Monochrome%20_pv.jpg);
 }
 
 .todo_done {
@@ -196,7 +199,7 @@ a {
 
 .todo_container div ul {
 	background-color: white;
-	border: 1px solid rgba(0, 0, 0, 0.3);
+	border: 0px solid rgba(0, 0, 0, 0.3);
 	margin: 10px;
 	border-radius: 5%;
 }
@@ -207,7 +210,7 @@ a {
 
 .todo_column {
 	padding: 10px;
-	min-width: 380px;
+	min-width: 420px;
 	min-height: 100px;
 }
 
@@ -235,7 +238,13 @@ a {
 
 .progress_bar {
 	margin-top: 40px;
+	color: white;
 }
+
+.project_title {
+	color: white;
+}
+
 .project_wrapper {
 	/* border: 1px solid red; */
 	width: 90%;
@@ -248,8 +257,10 @@ a {
 .project_link {
 	position: relative;
 	text-decoration: none;
-	color: #000;
-	background: #ffc;
+	/* color: #000; */
+	color: white;
+	/* background: #ffc; */
+	background: black;
 	display: block;
 	height: 15em;
 	width: 15em;
@@ -280,7 +291,8 @@ a {
 	transform: rotate(-3deg);
 	position: relative;
 	top: -5px;
-	background: #ccf;
+	/* background: #ccf; */
+	background: white;
 }
 .project_wrapper li:nth-child(5n) .project_link {
 	transform: rotate(5deg);
@@ -300,6 +312,13 @@ a {
 	margin: 1em;
 }
 
+.todo-text {
+	background-color:white;
+	color: black;
+	text-indent: top;
+	padding: 10px;
+} 
+=======
 .project_title_banner {
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.342);
@@ -318,3 +337,4 @@ a {
 	font-size: 2rem;
 	font-weight: 700;
 }
+

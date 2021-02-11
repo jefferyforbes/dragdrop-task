@@ -33,11 +33,31 @@ function Userprofile() {
         </div>
     )
 
+    const data = { username: 'example' };
+    const currentUser = localStorage.getItem('currentUser');
+
+
+    fetch('http://localhost:3000/editprofile', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(currentUser),
+    })
+        .then(response => response.json())
+        .then(currentUser => {
+            console.log('Success:', currentUser);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+
     // const [credentials] = useContext(CredentialsContext);
-	// return (
-	// 	<div className="userProfile">
-	// 		<a href=""></a>
-	// 		<div>Welcome {credentials && credentials.username}</div>; 
+    // return (
+    // 	<div className="userProfile">
+    // 		<a href=""></a>
+    // 		<div>Welcome {credentials && credentials.username}</div>; 
 }
 
 export default Userprofile;
