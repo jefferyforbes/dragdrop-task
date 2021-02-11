@@ -233,7 +233,6 @@ app.put("/todos", async (req, res) => {
 	res.json({ todo });
 });
 
-
 // Edit Profile
 // app.post("/editProfile", async(req, res) => {
 // 	const {currentUser, newUserName} = req.body;
@@ -267,8 +266,8 @@ function projectCheck(projectTitle) {
 // User profile
 
 app.post("/editprofile", async (req, res) => {
-	const {currentUser} = req.body
-}
+	const { currentUser } = req.body;
+});
 
 app.post("/createProject", async (req, res) => {
 	const { projectTitle, projectCreated, projectDueDate } = req.body;

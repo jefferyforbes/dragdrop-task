@@ -81,7 +81,7 @@ function Userprofile() {
     )
 
     const data = { username: 'example' };
-    const currentUser = localStorage.getItem('currentUser');
+    // const currentUser = localStorage.getItem('currentUser');
 
 
     fetch('http://localhost:3000/editprofile', {

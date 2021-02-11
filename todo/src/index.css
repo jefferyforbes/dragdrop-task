@@ -71,7 +71,7 @@ a {
 	padding-left: 5px;
 	padding-bottom: 5px;
 	width: 55px;
-	color:black;
+	color: black;
 	border-bottom: 1px solid black;
 }
 
@@ -178,7 +178,7 @@ a {
 
 .todo_current {
 	/* border: 1px solid green; */
-	background-image: url(https://st.depositphotos.com/1422675/1686/i/600/depositphotos_16864461-stock-photo-seamless-black-white-diagonal-stripes.jpg);
+	/* background-image: url(https://st.depositphotos.com/1422675/1686/i/600/depositphotos_16864461-stock-photo-seamless-black-white-diagonal-stripes.jpg); */
 	background-color: rgba(240, 63, 63, 0.87);
 	display: flex;
 	flex-direction: column;
@@ -188,7 +188,7 @@ a {
 	background-color: rgba(255, 165, 20, 0.856);
 	display: flex;
 	flex-direction: column;
-	background-image: url(https://s3.envato.com/files/61686245/Abstract%20Seamless%20Monochrome%20_pv.jpg);
+	/* background-image: url(https://s3.envato.com/files/61686245/Abstract%20Seamless%20Monochrome%20_pv.jpg); */
 }
 
 .todo_done {
@@ -210,7 +210,7 @@ a {
 
 .todo_column {
 	padding: 10px;
-	min-width: 420px;
+	width: 420px;
 	min-height: 100px;
 }
 
@@ -313,12 +313,12 @@ a {
 }
 
 .todo-text {
-	background-color:white;
+	/* background-color: white; */
 	color: black;
 	text-indent: top;
 	padding: 10px;
-} 
-=======
+}
+
 .project_title_banner {
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.541);
