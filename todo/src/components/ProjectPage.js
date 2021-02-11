@@ -33,7 +33,7 @@ function ProjectPage({ projects, setProjects }) {
 								<li>
 									{/* <ReactSortable list={currentProject.todos} setList={setProjects}> */}
 									<div className="todo_column todo_current">
-										<h2>Todo</h2>
+										<h2 className="todo-text" aria-label="To Do"> Todo</h2>
 										{currentProject.todos.map((todo, index) => {
 											return todo.status == 1 ? (
 												<Draggable
@@ -66,7 +66,7 @@ function ProjectPage({ projects, setProjects }) {
 					<ul>
 						<li>
 							<div className="todo_column todo_in_progress">
-								<h2>In progress</h2>
+								<h2 className="todo-text" aria-label="In progress">In progress</h2>
 								{currentProject.todos.map((todo) => {
 									return todo.status == 2 ? (
 										<li>
@@ -84,7 +84,7 @@ function ProjectPage({ projects, setProjects }) {
 					<ul>
 						<li>
 							<div className="todo_column todo_done">
-								<h2>Done</h2>
+								<h2 className="todo-text"aria-label="Done">Done</h2>
 								{currentProject.todos.map((todo) => {
 									return todo.status == 3 ? (
 										<li>

@@ -157,3 +157,25 @@ function projectCheck(projectTitle) {
 		return true;
 	});
 }
+
+// User profile
+
+app.post("/editprofile", async (req, res) => {
+	const {currentUser} = req.body
+}
+
+app.post("/createProject", async (req, res) => {
+	const { projectTitle, projectCreated, projectDueDate } = req.body;
+	if (projectCheck) {
+		const newProject = await Project.create({
+			title: projectTitle,
+			createdAt: projectCreated,
+			dueAt: projectDueDate,
+		});
+		res.json(newProject).status(200);
+	} else {
+		res.json(newProject).status(200);
+		alert(`${newProject} already exists`);
+		console.log(`${newProject} already exists`);
+	}
+});
