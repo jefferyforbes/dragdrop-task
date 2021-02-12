@@ -18,7 +18,6 @@ export default function Login({ addProject }) {
 	const [error, setError] = useState("");
 	const [, setCredentials] = useContext(CredentialsContext);
 	// const [, setProjects] = useContext(ProjectsContext);
-
 	const login = async (e) => {
 		e.preventDefault();
 		const data = await fetch("http://localhost:4000/login", {
@@ -70,17 +69,17 @@ export default function Login({ addProject }) {
 		<div className="wrapperStyle">
 			<div className="containerStyle">
 				<h1>Login</h1>
-				{error && <span style={{ color: "red" }}>{error}</span>}
+				{error && <span id="error-log" style={{ color: "red" }}>{error}</span>}
 				<form onSubmit={login}>
 					<input
-					id="username"
-
+					id="input_username"
 						className="login_input"
 						onChange={(e) => setUsername(e.target.value)}
 						placeholder="username" aria-label="Username"
 					></input>
 					<br />
 					<input
+					id="input_password"
 						className="login_input"
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}

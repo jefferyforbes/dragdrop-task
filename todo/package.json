@@ -34,7 +34,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"dev": "concurrently \"npm run start \" \"node src/server.js\""
+		"dev": "concurrently \"npm run start \" \"node src/server.js\"",
+		"cypress server start": "node src/server.js"
 	},
 	"eslintConfig": {
 		"extends": [

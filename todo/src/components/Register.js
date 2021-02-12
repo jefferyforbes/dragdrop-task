@@ -67,6 +67,7 @@ export default function Register() {
 				{error && <span style={{ color: "red" }}>{error}</span>}
 				<form onSubmit={register}>
 					<input
+					id="cyRegisterUsernameInput"
 						className="register_input"
 						onChange={(e) => setUsername(e.target.value)}
 						placeholder="username"
@@ -75,6 +76,7 @@ export default function Register() {
 					></input>
 					<br />
 					<input
+					id="cyRegisterPasswordInput"
 						className="register_input"
 						type="password"
 						onChange={(e) => setPassword(e.target.value)}

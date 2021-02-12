@@ -11,11 +11,11 @@ const { body, validationResult } = require("express-validator");
 
 // Parsing
 var bodyParser = require("body-parser");
-
 const { User } = require("../database/User");
 const { Todo } = require("../database/Todo");
 const { Project } = require("../database/Project");
 const { loop } = require("../database/Loop");
+const { Redirect } = require("react-router-dom");
 // const { readdirSync } = require("fs");
 
 const port = 4000;
@@ -96,7 +96,6 @@ app.post("/login", body("password").isLength({ min: 6 }), async (req, res) => {
 // Create New Project HTTP Request
 app.post("/createProject", async (req, res) => {
 	const { projectTitle, projectCreated, projectDueDate, userId } = req.body;
-	// if (projectCheck) {
 	console.log(projectTitle, userId);
 	const newProject = await Project.create({
 		title: projectTitle,
@@ -105,9 +104,6 @@ app.post("/createProject", async (req, res) => {
 		user_id: userId,
 	});
 	res.json(newProject).status(200);
-	// } else {
-	// console.log(`${newProject} already exists`);
-	// }
 });
 
 // Request All Projects
@@ -188,7 +184,7 @@ app.delete("/project/:id", async (req, res) => {
 		},
 	});
 	res.status(200);
-	res.json({ message: "Projected deleted succesfully" });
+	res.json({ message: "Project deleted succesfully" });
 });
 
 app.put("/project/:id", async (req, res) => {
@@ -264,10 +260,6 @@ function projectCheck(projectTitle) {
 }
 
 // User profile
-
-app.post("/editprofile", async (req, res) => {
-	const { currentUser } = req.body;
-});
 
 app.post("/createProject", async (req, res) => {
 	const { projectTitle, projectCreated, projectDueDate } = req.body;

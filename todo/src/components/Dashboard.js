@@ -59,7 +59,7 @@ function Dashboard({ projects, setProjects }) {
 	return (
 		<div>
 			<div className="project_add" style={{ display: add ? "flex" : "none" }}>
-				<form onSubmit={useHandleInput}>
+				<form id="cyFormTest" onSubmit={useHandleInput}>
 					<div className="flex_outer">
 						<li>
 							<label for="projectTitle">Project Title: </label>
@@ -77,6 +77,7 @@ function Dashboard({ projects, setProjects }) {
 						<li>
 							<label for="due-date">Due Date: </label>
 							<input
+								id="cyDueDateInput"
 								type="date"
 								className="project_due_input"
 								name="due-date"
@@ -90,7 +91,7 @@ function Dashboard({ projects, setProjects }) {
 				</form>
 			</div>
 			<div className="project_add_btn_wrapper">
-				<button onClick={() => setAdd(!add)} className="project_add_btn">
+				<button onClick={() => setAdd(!add)} id="addBtnCy" className="project_add_btn">
 					{add ? "Close" : "Add new project"}
 				</button>
 			</div>
