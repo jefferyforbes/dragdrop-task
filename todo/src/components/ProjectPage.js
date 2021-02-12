@@ -10,11 +10,6 @@ import { VscTrash } from "react-icons/vsc";
 import { VscAdd } from "react-icons/vsc";
 import Project from "./ProjectManage";
 
-/**
- * 
- * @param {string} todos dsadasdasda
- */
-
 function ProjectPage({ projects, setProjects, deleteTodo }) {
 	const { id } = useParams();
 	let currentProject = projects.find(function (project) {
@@ -165,6 +160,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 							style={{ padding: "5px", display: titleEdit ? "inline" : "none" }}
 						/>
 						<VscTrash
+							id="cyDeleteBtn"
 							style={{ padding: "5px" }}
 							onClick={handleProjectDelete}
 							className="icon project_delete"
@@ -196,6 +192,7 @@ function ProjectPage({ projects, setProjects, deleteTodo }) {
 													: "",
 											}}
 											className="todo_column todo_current"
+											id="cyColorBlindCheck"
 										>
 											<h2 className="todo-text" aria-label="To Do">
 												Todo
