@@ -13,7 +13,7 @@
 		"express": "^4.17.1",
 		"express-validator": "^6.9.2",
 		"jsdoc": "^3.6.6",
-		"jsonwebtoken": "^8.5.1",
+		"jsonwebtoken": "^9.0.0",
 		"materialize-css": "^1.0.0-rc.2",
 		"react": "^17.0.1",
 		"react-beautiful-dnd": "^13.0.0",
